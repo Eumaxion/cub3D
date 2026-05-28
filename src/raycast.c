@@ -89,6 +89,9 @@ void	render_frame(t_game *g)
 		init_ray(g, x);
 		calc_step_sidedist(g);
 		dda(g);
+		calc_wall_height(g);
+		draw_column(g, x);
+		x++;
 	}
 	//envia img para a janela
 	mlx_put_image_to_window(g->mlx, g->win, g->screen.img, 0, 0);
