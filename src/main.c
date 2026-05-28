@@ -14,7 +14,7 @@ int	key_hook(int keycode, void *param)
 	if (keycode == 65307) // codigo ESC
 	{
 		printf("Game closed by user\n");
-		exit(1);
+		exit(0);
 	}
 	return (0);
 }
