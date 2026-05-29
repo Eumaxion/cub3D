@@ -44,6 +44,8 @@ void	init_game(t_game *g)
                         &g->screen.line_len,
                         &g->screen.endian);
 	g->map = g_map;
+	g->colors.ceiling = 0x1A1A2E;  // azul escuro
+	g->colors.floor   = 0x4A3728;  // castanho
 	init_player(g);
 }
 
@@ -72,7 +74,7 @@ void	draw_column(t_game *g, int x)
 	y = 0;
 	while (y < g->ray.draw_start)
 	{
-		img_pixel_put(&g->screen, x, y, 0x000000);
+		img_pixel_put(&g->screen, x, y, g->colors.ceiling);
 		y++;
 	}
 	// parede
@@ -84,7 +86,7 @@ void	draw_column(t_game *g, int x)
 	// chão (cinzento)
 	while (y < WIN_H)
 	{
-		img_pixel_put(&g->screen, x, y, 0x333333);
+		img_pixel_put(&g->screen, x, y, g->colors.floor);
 		y++;
 	}
 }

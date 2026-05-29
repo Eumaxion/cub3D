@@ -99,6 +99,7 @@ typedef struct s_game
 	t_ray		ray;
 	t_img		screen;
 	t_texture	tex;
+	t_colors	colors;
 }	t_game;
 
 #endif
