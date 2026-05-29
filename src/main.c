@@ -19,35 +19,30 @@ int	key_hook(int keycode, void *param)
 	return (0);
 }
 
-int     close_hook(void)
+int     close_hook(void *param)
 {
+	(void)param;
         printf("Game closed by window\n");
         exit(0);
 }
 
+int	render_loop(void *param)
+{
+	render_frame((t_game *)param);
+	return (0);
+}
+
 int     main(int ac, char **av)
 {
-    void    *mlx;
-    void    *win;
+	t_game  g;
 
-    (void)ac;
-    (void)av;
-    mlx = mlx_init();
-    if (!mlx)
-    {
-        write(2, "mlx_init() failed\n", 18);
-        return (1);
-    }
-    write(1, "mlx_init() ok\n", 14);
-    win = mlx_new_window(mlx, 800, 600, "cub3D");
-    if (!win)
-    {
-        write(2, "mlx_new_window() failed\n", 24);
-        return (1);
-    }
-    write(1, "window created\n", 15);
-    mlx_key_hook(win, key_hook, NULL);
-    mlx_hook(win, 17, 0, close_hook, NULL);
-    mlx_loop(mlx);
-    return (0);
+	(void)ac;
+	(void)av;
+	ft_memset(&g, 0, sizeof(t_game));
+	init_game(&g);
+	mlx_key_hook(g.win, key_hook, &g);
+	mlx_hook(g.win, 17, 0, close_hook, &g);
+	mlx_loop_hook(g.mlx, render_loop, &g);
+	mlx_loop(g.mlx);
+	return (0);
 }

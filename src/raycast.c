@@ -27,6 +27,31 @@ static void	init_ray(t_game *g, int x)
 		r->deltadist_y = fabs(1.0 / r->raydir_y);
 }
 
+//DDA: avança célula a célula até bater numa parede
+static void     dda(t_game *g)
+{
+        t_ray *r = &g->ray;
+
+        r->hit = 0;
+        while (!r->hit)
+        {
+                if (r->sidedist_x < r->sidedist_y)
+                {
+                        r->sidedist_x += r->deltadist_x;
+                        r->map_x += r->step_x;
+                        r->side = 0; // parede N ou S
+                }
+                else
+                {
+                        r->sidedist_y += r->deltadist_y;
+                        r->map_y += r->step_y;
+                        r->side = 1; // parede E ou W
+                }
+                if (g->map[r->map_y][r->map_x] == '1')
+                        r->hit = 1;
+        }
+}
+
 //calcula sidedist inicial e step
 static void	calc_step_sidedist(t_game *g)
 {
@@ -55,29 +80,23 @@ static void	calc_step_sidedist(t_game *g)
 	}
 }
 
-//DDA: avança célula a célula até bater numa parede
-static void	dda(t_game *g)
+//calcula altura da coluna a desenhar
+static void	calc_wall_height(t_game *g)
 {
-	t_ray *r = &g->ray;
+	t_ray    *r = &g->ray;
 
-	r->hit = 0;
-	while (!r->hit)
-	{
-		if (r->sidedist_x < r->sidedist_y)
-		{
-			r->sidedist_x += r->deltadist_x;
-			r->map_x += r->step_x;
-			r->side = 0; // parede N ou S
-		}
-		else
-		{
-			r->sidedist_y += r->deltadist_y;
-			r->map_y += r->step_y;
-			r->side = 1; // parede E ou W
-        	}
-		if (g->map[r->map_y][r->map_x] == '1')
-			r->hit = 1;
-    	}
+	// distância perpendicular (evita fish-eye)
+	if (r->side == 0)
+		r->perpwalldist = r->sidedist_x - r->deltadist_x;
+	else
+		r->perpwalldist = r->sidedist_y - r->deltadist_y;
+	r->line_height = (int)(WIN_H / r->perpwalldist);
+	r->draw_start = WIN_H / 2 - r->line_height / 2;
+	if (r->draw_start < 0)
+		r->draw_start = 0;
+	r->draw_end = WIN_H / 2 + r->line_height / 2;
+	if (r->draw_end >= WIN_H)
+		r->draw_end = WIN_H - 1;
 }
 
 //loop principal: itera cada coluna do ecrã

@@ -1,6 +1,6 @@
 NAME        = cub3d
 SRC_PATH    = ./src/
-SRC_FILES   = main.c
+SRC_FILES   = main.c init.c raycast.c
 SRC         = $(addprefix $(SRC_PATH), $(SRC_FILES))
 OBJS_DIR    = obj
 OBJS        = $(patsubst $(SRC_PATH)%.c, $(OBJS_DIR)/%.o, $(SRC))
@@ -13,10 +13,10 @@ LIB_NAME    = libft.a
 LIB         = $(LIB_PATH)$(LIB_NAME)
 
 # MiniLibX
-MLX_PATH    = ./libs/minilibx_linux/
-MLX_NAME    = libmlx_Linux.a
+MLX_PATH    = ./libs/minilibx-linux/
+MLX_NAME    = libmlx.a
 MLX         = $(MLX_PATH)$(MLX_NAME)
-MLX_FLAGS   = -L$(MLX_PATH) -lmlx_Linux -lXext -lX11 -lm -lz
+MLX_FLAGS   = -L$(MLX_PATH) -lmlx -lXext -lX11 -lm -lz
 
 # Includes
 INC         = -I./includes/

@@ -15,7 +15,11 @@
 # include <unistd.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
-# include "prototypes.h"
+# include "../libs/libft/libft.h"
 # include "structs.h"
+# include "prototypes.h"
+
+# define WIN_W  800
+# define WIN_H  600
 
 #endif
