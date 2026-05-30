@@ -14,7 +14,9 @@
 # include <unistd.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
-# include "prototypes.h"
 # include "structs.h"
+# include "prototypes.h"
+
+# define EXT_ERR 3
 
 #endif

@@ -2,7 +2,22 @@ NAME = cub3d
 
 SRC_PATH = ./src/
 SRC_FILES = main.c
+
+PARSE_PATH = ./src/parsing/
+PARSE_FILES += flood_fill.c
+PARSE_FILES += init_game.c
+PARSE_FILES += parse_colors.c
+PARSE_FILES += parse_file.c
+PARSE_FILES += parse_map.c
+PARSE_FILES += parse_texture.c
+PARSE_FILES += validate_map.c
+
+UTILS_PATH = ./src/utils/
+UTILS_FILES = errors.c
+
 SRC = $(addprefix $(SRC_PATH), $(SRC_FILES))
+SRC += $(addprefix $(PARSE_PATH), $(PARSE_FILES))
+SRC += $(addprefix $(UTILS_PATH), $(UTILS_FILES))
 
 OBJS_DIR = obj
 OBJS = $(patsubst %.c, $(OBJS_DIR)/%.o, $(SRC))

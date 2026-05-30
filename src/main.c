@@ -2,8 +2,17 @@
 
 int	main(int ac, char **av)
 {
-	if (ac==1)
-		write(1,"ok\n", 4);
-	else
-		printf("%s\n", av[1]);
+	//t_game game;
+
+	if (ac != 2)
+	{
+		write(2, "USAGE: ./cub3d map.cub\n", 24);
+		return(1);
+	}
+	if (parse_cub(av[1]/* , &game */))
+		return (1);
+/* 	if (init_game(av))
+		return (1);
+	run_game(); */
+	return (0);
 }
