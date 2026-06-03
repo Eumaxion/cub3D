@@ -21,8 +21,8 @@
 
 # define WIN_W  800
 # define WIN_H  600
-# define MOV_SPEED   0.05
-# define ROT_SPEED   0.03
+# define MOV_SPEED   0.007
+# define ROT_SPEED   0.006
 
 
 #endif

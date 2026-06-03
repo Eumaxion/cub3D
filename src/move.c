@@ -1,6 +1,6 @@
 #include "../includes/cub3D.h"
 
-static void	move_forward_back(t_game *g, int dir)
+void	move_forward_back(t_game *g, int dir)
 {
 	t_player	*p;
 	double		new_x;
@@ -15,7 +15,7 @@ static void	move_forward_back(t_game *g, int dir)
 		p->y = new_y;
 }
 
-static void	move_strafe(t_game *g, int dir)
+void	move_strafe(t_game *g, int dir)
 {
 	t_player	*p;
 	double		new_x;
@@ -30,7 +30,7 @@ static void	move_strafe(t_game *g, int dir)
 		p->y = new_y;
 }
 
-static void	rotate(t_game *g, int dir)
+void	rotate(t_game *g, int dir)
 {
 	t_player	*p;
 	double		old_dir_x;
@@ -47,7 +47,7 @@ static void	rotate(t_game *g, int dir)
 	p->plane_y = old_plane_x * sin(angle) + p->plane_y * cos(angle);
 }
 
-int	key_handler(int keycode, void *param)
+/*int	key_handler(int keycode, void *param)
 {
 	t_game	*g;
 
@@ -70,4 +70,4 @@ int	key_handler(int keycode, void *param)
 	else if (keycode == XK_Right)
 		rotate(g, -1);
 	return (0);
-}
+}*/

@@ -100,6 +100,7 @@ typedef struct s_game
 	t_img		screen;
 	t_texture	tex;
 	t_colors	colors;
+	int		keys[65536];
 }	t_game;
 
 #endif
