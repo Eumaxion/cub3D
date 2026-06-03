@@ -1,11 +1,11 @@
 NAME        = cub3d
 SRC_PATH    = ./src/
-SRC_FILES   = main.c init.c raycast.c
+SRC_FILES   = init.c  main.c  move.c  raycast.c
 SRC         = $(addprefix $(SRC_PATH), $(SRC_FILES))
 OBJS_DIR    = obj
 OBJS        = $(patsubst $(SRC_PATH)%.c, $(OBJS_DIR)/%.o, $(SRC))
 
-CFLAGS      = -Wall -Werror -Wextra
+CFLAGS      = -Wall -Wextra -Werror -g3 -Wno-cast-function-type
 
 # Libft
 LIB_PATH    = ./libs/libft/
@@ -35,7 +35,7 @@ $(LIB):
 	@make -C $(LIB_PATH)
 
 $(MLX):
-	@make -C $(MLX_PATH)
+	@make -sC $(MLX_PATH)
 
 $(OBJS_DIR)/%.o: $(SRC_PATH)%.c
 	@mkdir -p $(dir $@)

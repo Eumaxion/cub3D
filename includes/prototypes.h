@@ -13,7 +13,7 @@ void    img_pixel_put(t_img *img, int x, int y, int color);
 void    draw_column(t_game *g, int x);
 
 // main.c
-int     key_hook(int keycode, void *param);
+int     key_handler(int keycode, void *param);
 int     close_hook(void *param);
 int     render_loop(void *param);
 int     main(int ac, char **av);

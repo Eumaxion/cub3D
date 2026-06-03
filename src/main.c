@@ -6,7 +6,7 @@
 		write(1,"ok\n", 4);
 	else
 		printf("%s\n", av[1]);
-}*/
+}
 
 int	key_hook(int keycode, void *param)
 {
@@ -17,7 +17,7 @@ int	key_hook(int keycode, void *param)
 		exit(0);
 	}
 	return (0);
-}
+}*/
 
 int     close_hook(void *param)
 {
@@ -40,9 +40,12 @@ int     main(int ac, char **av)
 	(void)av;
 	ft_memset(&g, 0, sizeof(t_game));
 	init_game(&g);
-	mlx_key_hook(g.win, key_hook, &g);
-	mlx_hook(g.win, 17, 0, close_hook, &g);
-	mlx_loop_hook(g.mlx, render_loop, &g);
+	//mlx_key_hook(g.win, key_hook, &g);
+	mlx_key_hook(g.win, key_handler, &g);
+	mlx_hook(g.win, 17, 0, (int (*)())close_hook, &g);
+	mlx_loop_hook(g.mlx, (int (*)())render_loop, &g);
+	//mlx_hook(g.win, 17, 0, close_hook, &g);
+	//mlx_loop_hook(g.mlx, render_loop, &g);
 	mlx_loop(g.mlx);
 	return (0);
 }
