@@ -17,6 +17,7 @@
 # include "structs.h"
 # include "prototypes.h"
 
-# define EXT_ERR 3
+# define USAGE_ERR 6
+# define EXTENSION_ERR 7
 
 #endif

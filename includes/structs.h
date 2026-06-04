@@ -98,7 +98,8 @@ typedef struct s_game
 	t_player	player;
 	t_ray		ray;
 	t_img		screen;
-	t_texture	tex;
+	t_img		colors;
+	t_texture	texz;
 }	t_game;
 
 #endif
