@@ -1,9 +1,11 @@
 #ifndef PROTOTYPES_H
 # define PROTOTYPES_H
 
+// -MAIN
 int	main(int ac, char **av);
 
-//-PARSING: 
+//-PARSING:
+int	init_game(t_game *game);
 int	parse_cub(char *av/* , t_game *game */);
 
 //-ERROR: 

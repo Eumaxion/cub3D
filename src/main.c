@@ -6,6 +6,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return(print_error(USAGE_ERR));
+	init_game(&game);
 	if (parse_cub(av[1]/* , &game */))
 		return (1);
  	if (init_game(av, &game))
