@@ -9,6 +9,7 @@ void    rotate(t_game *g, int dir);
 // init.c
 void    init_game(t_game *g);
 void    init_player(t_game *g);
+void    init_textures(t_game *g);
 
 // raycaster.c
 void    render_frame(t_game *g);

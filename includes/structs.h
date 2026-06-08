@@ -30,6 +30,8 @@ typedef struct s_texture
 	t_img	south;
 	t_img	west;
 	t_img	east;
+	int	w;
+	int	h;
 }	t_texture;
 
 typedef struct s_map
@@ -88,6 +90,9 @@ typedef struct s_ray
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
+
+	double  wall_x;
+	int     	tex_x;
 }	t_ray;
 
 typedef struct s_game

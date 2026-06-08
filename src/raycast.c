@@ -81,7 +81,41 @@ static void	calc_step_sidedist(t_game *g)
 }
 
 //calcula altura da coluna a desenhar
-static void	calc_wall_height(t_game *g)
+static void     calc_wall_height(t_game *g)
+{
+    t_ray    *r = &g->ray;
+    t_player *p = &g->player;
+
+    if (r->side == 0)
+    {
+        r->perpwalldist = r->sidedist_x - r->deltadist_x;
+        r->wall_x = p->y + r->perpwalldist * r->raydir_y;
+    }
+    else
+    {
+        r->perpwalldist = r->sidedist_y - r->deltadist_y;
+        r->wall_x = p->x + r->perpwalldist * r->raydir_x;
+    }
+    r->wall_x -= floor(r->wall_x);  // fica entre 0.0 e 1.0
+
+    // coluna da textura
+    r->tex_x = (int)(r->wall_x * g->tex.w);
+    if (r->side == 0 && r->raydir_x > 0)
+        r->tex_x = g->tex.w - r->tex_x - 1;
+    if (r->side == 1 && r->raydir_y < 0)
+        r->tex_x = g->tex.w - r->tex_x - 1;
+
+    // altura
+    r->line_height = (int)(WIN_H / r->perpwalldist);
+    r->draw_start = WIN_H / 2 - r->line_height / 2;
+    if (r->draw_start < 0)
+        r->draw_start = 0;
+    r->draw_end = WIN_H / 2 + r->line_height / 2;
+    if (r->draw_end >= WIN_H)
+        r->draw_end = WIN_H - 1;
+}
+
+/*static void	calc_wall_height(t_game *g)
 {
 	t_ray    *r = &g->ray;
 
@@ -97,7 +131,7 @@ static void	calc_wall_height(t_game *g)
 	r->draw_end = WIN_H / 2 + r->line_height / 2;
 	if (r->draw_end >= WIN_H)
 		r->draw_end = WIN_H - 1;
-}
+}*/
 
 //loop principal: itera cada coluna do ecrã
 void	render_frame(t_game *g)

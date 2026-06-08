@@ -50,24 +50,3 @@ int     main(int ac, char **av)
     mlx_loop(g.mlx);
     return (0);
 }
-
-/*int	render_loop(void *param)
-{
-	render_frame((t_game *)param);
-	return (0);
-}
-
-int     main(int ac, char **av)
-{
-	t_game  g;
-
-	(void)ac;
-	(void)av;
-	ft_memset(&g, 0, sizeof(t_game));
-	init_game(&g);
-	mlx_key_hook(g.win, key_handler, &g);
-	mlx_hook(g.win, 17, 0, (int (*)())close_hook, &g);
-	mlx_loop_hook(g.mlx, (int (*)())render_loop, &g);
-	mlx_loop(g.mlx);
-	return (0);
-}*/
