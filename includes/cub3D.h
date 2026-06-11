@@ -17,6 +17,8 @@
 # include "structs.h"
 # include "prototypes.h"
 
+// MACROS 
+
 # define USAGE_ERR 6
 # define EXTENSION_ERR 7
 

@@ -6,6 +6,7 @@ int	main(int ac, char **av);
 
 //-PARSING:
 int	init_game(t_game *game);
+int	extension_test(char *file);
 int	parse_cub(char *av/* , t_game *game */);
 
 //-ERROR: 

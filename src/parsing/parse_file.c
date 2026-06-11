@@ -1,6 +1,6 @@
 # include "../includes/cub3D.h"
 
-static int	extension_test(char *file)
+int	extension_test(char *file)
 {
 	int	i;
 
@@ -17,6 +17,20 @@ static int	extension_test(char *file)
 		return (EXTENSION_ERR);
 	return (0);
 }
+
+int file_test(char *file)
+{
+	int	fd;
+
+	if (print_error(extension_test(file)))
+		return (1);
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return(print_error(strerror(errno)));
+	close(fd);
+	if (is_dir);
+	if (is_xpm_file);
+}
 // open .cub;
 
 // check only 0 1 orientation (N,E,S,W);
@@ -28,8 +42,6 @@ static int	extension_test(char *file)
 
 int	parse_cub(char *av/* , t_game *game */)
 {
-	if (print_error(extension_test(av)))
-		return (1);
 	if (print_error(parse_textures(av)))
 		return (1);
 	if (print_error(parse_colors(av)))

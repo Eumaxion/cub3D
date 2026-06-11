@@ -5,6 +5,7 @@ void	init_player(t_player *player)
 {
 	player->angle = 0.0;
 	player->dir_x = 0.0;
+	player->dir_y = 0.0;
 	player->plane_x = 0.0;
 	player->plane_y = 0.0;
 	player->x = 0.0;
@@ -12,13 +13,40 @@ void	init_player(t_player *player)
 }
 
 void	init_ray(t_ray *ray)
-{}
+{
+	ray->camera_x = 0.0;
+	ray->raydir_x = 0.0;
+	ray->raydir_y = 0.0;
+	ray->map_x = 0;
+	ray->map_y = 0;
+	ray->sidedist_x = 0.0;
+	ray->sidedist_y = 0.0;
+	ray->deltadist_x = 0.0;
+	ray->deltadist_y = 0.0;
+	ray->perpwalldist = 0.0;
+	ray->step_x = 0;
+	ray->step_y = 0;
+	ray->hit = 0;
+	ray->side = 0;
+	ray->line_height = 0;
+	ray->draw_start = 0;
+	ray->draw_end = 0;
+}
 
-void	init_img_colors(t_img *img, t_colors *colors)
-{}
+void	init_img_colors(t_colors *colors)
+{
+	colors->ceiling = 0;
+	colors->floor = 0;
+}
 
-void	init_text(t_texture *texture)
-{}
+void	init_img(t_img *image)
+{
+	image->img = NULL;
+	image->addr = NULL;
+	image->bpp = 0;
+	image->endian = 0;
+	image->line_len = 0;
+}
 
 int	init_game(t_game *game)
 {
@@ -26,6 +54,10 @@ int	init_game(t_game *game)
 	game->win = NULL;
 	init_player(&game->player);
 	init_ray(&game->ray);
-	init_img_colors(&game->screen, &game->colors);
-	init_text(&game->textures);
+	init_img(&game->screen);
+	init_img(&game->textures.east);
+	init_img(&game->textures.north);
+	init_img(&game->textures.south);
+	init_img(&game->textures.west);
+	init_colors(&game->colors);
 }
