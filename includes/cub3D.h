@@ -19,7 +19,15 @@
 
 // MACROS 
 
-# define USAGE_ERR 6
-# define EXTENSION_ERR 7
+# define USAGE_ERR "USAGE: ./cub3d map.cub\n"
+# define EXTENSION_ERR "Invalid file, EXAMPLE.cub required.\n"
+# define XPM_ERROR "Invalid xpm\n"
+# define IS_DIRECTORY "The file is a directory\n"
+# define CUB_FILE 1
+# define XPM_FILE 0
+
+# ifndef O_DIRECTORY
+#  define O_DIRECTORY 00200000
+# endif
 
 #endif
