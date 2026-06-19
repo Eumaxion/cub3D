@@ -1,13 +1,21 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+typedef struct s_map		t_map;
 typedef struct s_game		t_game;
 typedef struct s_img		t_img;
 typedef struct s_texture	t_texture;
-typedef struct s_map		t_map;
 typedef struct s_player		t_player;
 typedef struct s_colors		t_colors;
 typedef struct s_ray		t_ray;
+
+typedef struct s_map
+{
+	char	**grid;
+	int		n_lines;
+	int		width;
+	int		height;
+}	t_map;
 
 typedef struct s_mlx
 {
@@ -31,13 +39,6 @@ typedef struct s_texture
 	t_img	west;
 	t_img	east;
 }	t_texture;
-
-typedef struct s_map
-{
-	char	**grid;
-	int		width;
-	int		height;
-}	t_map;
 
 typedef struct s_player
 {
@@ -95,6 +96,7 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	char		**map;
+	t_map		*map_parse;
 	t_player	player;
 	t_ray		ray;
 	t_img		screen;

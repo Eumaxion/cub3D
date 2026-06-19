@@ -76,15 +76,23 @@ int	file_test(char *file, int type)
 
 int	parse_cub(char *av, t_game *game)
 {
+	int	fd;
+
 	if (file_test(av, CUB_FILE))
 		return (EXIT_FAILURE);
-	if (parse_textures(av))
+	fd = open(av, O_RDONLY);
+	if (fd <= 0)
+		return (print_error(strerror(errno), NULL, 0));
+	init_map(game->map_parse);
+	if (get_info(game, fd))
 		return (EXIT_FAILURE);
-	if (parse_colors(av))
+	if (parse_textures(game, fd))
 		return (EXIT_FAILURE);
-	if (validate_map(av))
+	if (parse_colors(game, fd))
 		return (EXIT_FAILURE);
-	if (flood_fill(av))
+	if (parse_map(game, fd))
+		return (EXIT_FAILURE);
+	if (flood_fill(game, fd))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

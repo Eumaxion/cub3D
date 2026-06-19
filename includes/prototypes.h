@@ -8,6 +8,7 @@ int	main(int ac, char **av);
 int	init_game(t_game *game);
 int	file_test(char *file, int type);
 int	parse_cub(char *av, t_game *game);
+int	parse_textures(t_game *game, int fd);
 
 //-ERROR && CLEANING: 
 int	print_error(char *arg, t_game *game, int clean);
