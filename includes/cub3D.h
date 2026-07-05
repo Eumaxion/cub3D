@@ -14,6 +14,7 @@
 # include <unistd.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
+# include "../libs/libft/libft.h"
 # include "structs.h"
 # include "prototypes.h"
 

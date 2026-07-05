@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:10:20 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/06/19 16:13:57 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/05 16:41:26 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
+#  define BUFFER_SIZE 42
 # endif
 
-char	*get_next_line(int fd);
-ssize_t	ft_strchr_g(const char *str);
-size_t	ft_strlen_g(const char *str);
-char	*ft_strjoin_g(char *line, char *stash);
-void	ft_memmove_g(char *stash);
-char	*release(char *line, char *stash);
+int			ft_strlen_gnl(char *str);
+char		*ft_strchr_gnl(char *vault, char c);
+char		*ft_strjoin_gnl(char *line, char *vault);
+char		*get_next_line(int fd);
 
 typedef struct s_list
 {

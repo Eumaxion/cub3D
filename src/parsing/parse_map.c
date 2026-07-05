@@ -1,9 +1,70 @@
 # include "../includes/cub3D.h"
 
-int get_info(t_game *game, int fd)
+void	init_map(t_map *map_parse)
 {
-    char *line;
+	map_parse->grid = NULL;
+	map_parse->map_index = 0;
+	map_parse->width = 0;
+	map_parse->height = 0;
+}
 
-    line = get_next_line(fd);
-    if (!line);
+static int	map_height(char **file, int start)
+{
+	int	height;
+
+	height = 0;
+	while (file[start + height])
+		height++;
+	return (height);
+}
+
+static int	map_width(char **map)
+{
+	int	i;
+	int	width;
+	int	len;
+
+	i = 0;
+	width = 0;
+	while (map[i])
+	{
+		len = ft_strlen(map[i]);
+		if (len && map[i][len - 1] == '\n')
+			len--;
+		if (len > width)
+			width = len;
+		i++;
+	}
+	return (width);
+}
+
+static int	copy_map(t_game *game, char **file)
+{
+	int	i;
+	int	j;
+
+	game->map_parse.height = map_height(file,
+			game->map_parse.map_index);
+	game->map_parse.grid = ft_calloc(game->map_parse.height + 1,
+			sizeof(char *));
+	if (!game->map_parse.grid)
+		return (EXIT_FAILURE);
+	i = game->map_parse.map_index;
+	j = 0;
+	while (file[i])
+	{
+		game->map_parse.grid[j] = ft_strdup(file[i]);
+		if (!game->map_parse.grid[j])
+			return (EXIT_FAILURE);
+		i++;
+		j++;
+	}
+	game->map_parse.grid[j] = NULL;
+	game->map_parse.width = map_width(game->map_parse.grid);
+	return (EXIT_SUCCESS);
+}
+
+int	parse_map(t_game *game, char **file)
+{
+	return (copy_map(game, file));
 }

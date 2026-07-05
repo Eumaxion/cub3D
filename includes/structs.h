@@ -12,7 +12,7 @@ typedef struct s_ray		t_ray;
 typedef struct s_map
 {
 	char	**grid;
-	int		n_lines;
+	int		map_index;
 	int		width;
 	int		height;
 }	t_map;
@@ -27,6 +27,7 @@ typedef struct s_img
 {
 	void	*img;
 	char	*addr;
+	char	*path;
 	int		bpp;
 	int		line_len;
 	int		endian;
@@ -58,6 +59,8 @@ typedef struct s_colors
 {
 	int	floor;
 	int	ceiling;
+	int	floor_set;
+	int	ceiling_set;
 }	t_colors;
 
 /* -------------------------------------------------------------------------------------------------- */
@@ -96,7 +99,8 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	char		**map;
-	t_map		*map_parse;
+	char		*map_path;
+	t_map		map_parse;
 	t_player	player;
 	t_ray		ray;
 	t_img		screen;

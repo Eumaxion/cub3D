@@ -17,17 +17,19 @@ int	cub_extension(char *file)
 {
 	int	i;
 
-	i = ft_strlen(file);
-	while (file[i] != '.' && file[i] && i !=0)
-		i--;
-	if (!file[i] || file[++i] !=  'c')
+	i = ft_strlen(file) - 1;
+	if (!i)
+		return(1);
+	while (file[i] != '.' && file[i] && i)
+		--i;
+	if (!file[i++] || file[i] !=  'c')
 		return (1);
-	if (!file[i] || file[++i] !=  'u')
+	if (!file[i++] || file[i] !=  'u')
 		return (1);
-	if (!file[i] || file[++i] !=  'b')
+ 	if (!file[i++] || file[i] !=  'b')
 		return (1);
-	if (file[++i])
-		return (1);
+	if (file[++i] != 0)
+		return(1);
 	return (0);
 }
 
@@ -35,16 +37,18 @@ int	xpm_extension(char *file)
 {
 	int	i;
 
-	i = ft_strlen(file);
-	while (file[i] != '.' && file[i] && i !=0)
+	i = ft_strlen(file) - 1;
+	if (!i)
+		return(1);
+	while (file[i] != '.' && file[i] && i)
 		i--;
-	if (!file[i] || file[++i] !=  'x')
+	if (!file[i++] || file[i] !=  'x')
 		return (1);
-	if (!file[i] || file[++i] !=  'p')
+	if (!file[i++] || file[i] !=  'p')
 		return (1);
-	if (!file[i] || file[++i] !=  'm')
+	if (!file[i++] || file[i] !=  'm')
 		return (1);
-	if (file[++i])
+	if (file[++i] != 0)
 		return (1);
 	return (0);
 }
@@ -53,16 +57,16 @@ int	file_test(char *file, int type)
 {
 	int	fd;
 
+	if (type && cub_extension(file))
+		return (print_error(EXTENSION_ERR, NULL, 0));
+	if (!type && xpm_extension(file))
+		return (print_error(XPM_ERROR, NULL, 0));
 	if (is_dir(file))
 		return (print_error(IS_DIRECTORY, NULL, 0));
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return(print_error(strerror(errno), NULL, 0));
 	close(fd);
-	if (type && cub_extension(file))
-		return (print_error(EXTENSION_ERR, NULL, 0));
-	if (!type && xpm_extension(file))
-		return (print_error(XPM_ERROR, NULL, 0));
 	return (EXIT_SUCCESS);
 }
 // open .cub;
@@ -76,23 +80,19 @@ int	file_test(char *file, int type)
 
 int	parse_cub(char *av, t_game *game)
 {
-	int	fd;
-
+	char	**file;
+	
 	if (file_test(av, CUB_FILE))
 		return (EXIT_FAILURE);
-	fd = open(av, O_RDONLY);
-	if (fd <= 0)
-		return (print_error(strerror(errno), NULL, 0));
-	init_map(game->map_parse);
-	if (get_info(game, fd))
+	file = read_file(av);
+	if (!file)
 		return (EXIT_FAILURE);
-	if (parse_textures(game, fd))
-		return (EXIT_FAILURE);
-	if (parse_colors(game, fd))
-		return (EXIT_FAILURE);
-	if (parse_map(game, fd))
-		return (EXIT_FAILURE);
-	if (flood_fill(game, fd))
-		return (EXIT_FAILURE);
+	if (parse_elements(game, file))
+		return (free_matrix(file), EXIT_FAILURE);
+	if (parse_map(game, file))
+		return (free_matrix(file), EXIT_FAILURE);
+	if (validate_map(game))
+		return (free_matrix(file), EXIT_FAILURE);
+	free_matrix(file);
 	return (EXIT_SUCCESS);
 }

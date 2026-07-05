@@ -12,3 +12,22 @@ int	main(int ac, char **av)
 	//run_game(&game);
 	return (EXIT_SUCCESS);
 }
+
+/* int	main(int ac, char **av)
+{
+	(void)ac;
+	(void)av;
+	int	fd = open("src/text.txt", O_RDONLY);
+	if (fd <= 0)
+		return (print_error(strerror(errno), NULL, 0));
+	char *line;
+	line = get_next_line(fd);
+	while(line)
+	{
+		printf("%s\n", line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return 0;
+} */

@@ -1,11 +1,27 @@
 # include "../includes/cub3D.h"
 
-int clean_game(t_game *game)
+void	free_matrix(char **matrix)
 {
-	if (game)
+	int	i;
+
+	if (!matrix)
+		return ;
+	i = 0;
+	while (matrix[i])
 	{
-		printf("%d", game->colors.ceiling);
-		return (1);
+		free(matrix[i]);
+		i++;
 	}
-	return (0);
+	free(matrix);
+}
+
+int	clean_game(t_game *game)
+{
+	if (!game)
+		return (1);
+	if (game->map)
+		free_matrix(game->map);
+	if (game->map_parse.grid)
+		free_matrix(game->map_parse.grid);
+	return (1);
 }

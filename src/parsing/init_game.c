@@ -1,6 +1,5 @@
 # include "../includes/cub3D.h"
 
-
 void	init_player(t_player *player)
 {
 	player->angle = 0.0;
@@ -35,8 +34,8 @@ void	init_ray(t_ray *ray)
 
 void	init_img_colors(t_colors *colors)
 {
-	colors->ceiling = 0;
-	colors->floor = 0;
+	colors->ceiling = -1;
+	colors->floor = -1;
 }
 
 void	init_img(t_img *image)
@@ -48,16 +47,18 @@ void	init_img(t_img *image)
 	image->line_len = 0;
 }
 
-int	init_game(t_game *game)
+void	init_game(t_game *game)
 {
 	game->map = NULL;
 	game->win = NULL;
+	game->map_path = NULL;
 	init_player(&game->player);
+	init_map(&game->map_parse);
 	init_ray(&game->ray);
 	init_img(&game->screen);
 	init_img(&game->textures.east);
 	init_img(&game->textures.north);
 	init_img(&game->textures.south);
 	init_img(&game->textures.west);
-	init_colors(&game->colors);
+	init_img_colors(&game->colors);
 }
