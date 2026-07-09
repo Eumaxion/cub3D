@@ -42,7 +42,10 @@ char	**read_file(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		return (print_error(strerror(errno), NULL, 0));
+	{
+		print_error(strerror(errno), NULL, 0);
+		return (NULL);
+	}
 	file = NULL;
 	line = get_next_line(fd);
 	while (line)

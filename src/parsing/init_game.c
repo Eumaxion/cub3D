@@ -42,6 +42,7 @@ void	init_img(t_img *image)
 {
 	image->img = NULL;
 	image->addr = NULL;
+	image->path = NULL;
 	image->bpp = 0;
 	image->endian = 0;
 	image->line_len = 0;

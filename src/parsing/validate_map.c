@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 17:13:37 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/05 17:16:13 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/09 22:46:09 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,22 @@ int	is_valid_char(char c)
 
 int	check_chars(t_game *game)
 {
-	/* para cada linha
-    para cada caractere
-        se não for um dos permitidos
-            erro */
-}
+	int	x;
+	int	y;
 
-int	check_player(t_game *game)
-{
-	
-}
-
-int	check_closed(t_game *game)
-{
-	
+	y = 0;
+	while (game->map_parse.grid[y])
+	{
+		x = 0;
+		while (game->map_parse.grid[y][x])
+		{
+			if (!is_valid_char(game->map_parse.grid[y][x]))
+				return (print_error("Invalid map character.", NULL, 0));
+			x++;
+		}
+		y++;
+	}
+	return (EXIT_SUCCESS);
 }
 
 int	validate_map(t_game *game)

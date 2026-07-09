@@ -6,12 +6,14 @@ SRC_FILES = main.c
 PARSE_PATH = ./src/parsing/
 PARSE_FILES = init_game.c
 PARSE_FILES += flood_fill.c
-PARSE_FILES += parse_colors.c
+PARSE_FILES += parse_color.c
 PARSE_FILES += parse_file.c
 PARSE_FILES += parse_map.c
 PARSE_FILES += parse_texture.c
 PARSE_FILES += read_file.c
+PARSE_FILES += parse_elements.c
 PARSE_FILES += validate_map.c
+PARSE_FILES += validate_utils.c
 
 UTILS_PATH = ./src/utils/
 UTILS_FILES = errors.c
