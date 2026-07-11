@@ -2,6 +2,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include <mlx.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
@@ -14,7 +15,14 @@
 # include <unistd.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
-# include "prototypes.h"
+# include "../libs/libft/libft.h"
 # include "structs.h"
+# include "prototypes.h"
+
+# define WIN_W  800
+# define WIN_H  600
+# define MOV_SPEED   0.007
+# define ROT_SPEED   0.006
+
 
 #endif
