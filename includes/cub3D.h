@@ -2,6 +2,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include <mlx.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
@@ -30,5 +31,10 @@
 # ifndef O_DIRECTORY
 #  define O_DIRECTORY 00200000
 # endif
+# define WIN_W  800
+# define WIN_H  600
+# define MOV_SPEED   0.007
+# define ROT_SPEED   0.006
+
 
 #endif

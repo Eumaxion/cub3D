@@ -39,6 +39,8 @@ typedef struct s_texture
 	t_img	south;
 	t_img	west;
 	t_img	east;
+	int	w;
+	int	h;
 }	t_texture;
 
 typedef struct s_player
@@ -92,6 +94,9 @@ typedef struct s_ray
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
+
+	double  wall_x;
+	int     	tex_x;
 }	t_ray;
 
 typedef struct s_game
@@ -106,6 +111,9 @@ typedef struct s_game
 	t_img		screen;
 	t_colors	colors;
 	t_texture	textures;
+	t_texture	tex;
+	t_colors	colors;
+	int		keys[65536];
 }	t_game;
 
 #endif
