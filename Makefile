@@ -1,3 +1,51 @@
+NAME = cub3d
+
+SRC_PATH = ./src/
+SRC_FILES = main.c
+
+PARSE_PATH = ./src/parsing/
+PARSE_FILES = init_game.c
+PARSE_FILES += flood_fill.c
+PARSE_FILES += parse_color.c
+PARSE_FILES += parse_file.c
+PARSE_FILES += parse_map.c
+PARSE_FILES += parse_texture.c
+PARSE_FILES += read_file.c
+PARSE_FILES += parse_elements.c
+PARSE_FILES += validate_map.c
+PARSE_FILES += validate_utils.c
+
+UTILS_PATH = ./src/utils/
+UTILS_FILES = errors.c
+UTILS_FILES += clean.c
+
+SRC = $(addprefix $(SRC_PATH), $(SRC_FILES))
+SRC += $(addprefix $(PARSE_PATH), $(PARSE_FILES))
+SRC += $(addprefix $(UTILS_PATH), $(UTILS_FILES))
+
+OBJS_DIR = obj
+OBJS = $(patsubst %.c, $(OBJS_DIR)/%.o, $(SRC))
+
+CFLAGS = -Wall -Werror -Wextra
+
+LIB_PATH = ./libs/libft/
+LIB_NAME = libft.a
+LIB = $(LIB_PATH)$(LIB_NAME)
+
+INC_PATH = ./includes/
+INC	= -I$(INC_PATH)
+INC	+= -I$(LIB_PATH)
+
+RM = rm -rf
+
+GREEN  := \033[0;32m
+RED    := \033[0;31m
+YELLOW := \033[1;33m
+RESET  := \033[0m
+
+all: $(LIB) $(NAME)
+
+$(LIB): 
 NAME        = cub3d
 SRC_PATH    = ./src/
 SRC_FILES   = init.c  main.c  move.c  raycast.c

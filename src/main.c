@@ -1,5 +1,70 @@
 #include "../includes/cub3D.h"
 
+/* static void	print_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map && map[i])
+	{
+		printf("%s", map[i]);
+		i++;
+	}
+}
+
+void	print_game(t_game *game)
+{
+	printf("=== TEXTURES ===\n");
+	printf("NO: %s\n", game->textures.north.path);
+	printf("SO: %s\n", game->textures.south.path);
+	printf("WE: %s\n", game->textures.west.path);
+	printf("EA: %s\n", game->textures.east.path);
+
+	printf("\n=== COLORS ===\n");
+	printf("Floor: %d\n", game->colors.floor);
+	printf("Ceiling: %d\n", game->colors.ceiling);
+
+	printf("\n=== MAP ===\n");
+	printf("Width : %d\n", game->map_parse.width);
+	printf("Height: %d\n", game->map_parse.height);
+	printf("Index : %d\n", game->map_parse.map_index);
+
+	print_map(game->map_parse.grid);
+
+	printf("\n=== PLAYER ===\n");
+	printf("x = %.2f\n", game->player.x);
+	printf("y = %.2f\n", game->player.y);
+	printf("dir = (%.2f, %.2f)\n",
+		game->player.dir_x, game->player.dir_y);
+	printf("plane = (%.2f, %.2f)\n",
+		game->player.plane_x, game->player.plane_y);
+}
+
+int	main(int ac, char **av)
+{
+	t_game	game;
+
+	if (ac != 2)
+		return (print_error(USAGE_ERR, NULL, 0));
+	init_game(&game);
+	if (parse_cub(av[1], &game))
+		return (clean_game(&game));
+	print_game(&game);
+	clean_game(&game);
+	return (EXIT_SUCCESS);
+} */
+
+int	main(int ac, char **av)
+{
+	t_game game;
+
+	if (ac != 2)
+		return(print_error(USAGE_ERR, NULL, 0));
+	init_game(&game);
+	if (parse_cub(av[1], &game))
+		return (clean_game(&game));
+	//run_game(&game);
+	return (EXIT_SUCCESS);
 int     close_hook(void *param)
 {
 	(void)param;

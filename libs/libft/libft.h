@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:10:20 by mlima-si          #+#    #+#             */
-/*   Updated: 2025/04/23 12:39:23 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/05 16:41:26 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+int			ft_strlen_gnl(char *str);
+char		*ft_strchr_gnl(char *vault, char c);
+char		*ft_strjoin_gnl(char *line, char *vault);
+char		*get_next_line(int fd);
 
 typedef struct s_list
 {
