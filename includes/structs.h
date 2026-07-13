@@ -109,7 +109,6 @@ typedef struct s_game
 	t_player	player;
 	t_ray		ray;
 	t_img		screen;
-	t_colors	colors;
 	t_texture	textures;
 	t_texture	tex;
 	t_colors	colors;

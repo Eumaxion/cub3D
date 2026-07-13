@@ -28,7 +28,7 @@ static void	init_ray(t_game *g, int x)
 }
 
 //DDA: avança célula a célula até bater numa parede
-static void     dda(t_game *g)
+static void	dda(t_game *g)
 {
         t_ray *r = &g->ray;
 
