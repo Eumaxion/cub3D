@@ -19,21 +19,21 @@ UTILS_PATH = ./src/utils/
 UTILS_FILES = errors.c
 UTILS_FILES += clean.c
 
-RAYCAST_PATH = ./src/raycasting/
-RAYCAST_FILES = raycast.c
-RAYCAST_FILES += move.c
-RAYCAST_FILES += key_event.c
-RAYCAST_FILES += utils_ray.c
+GAMEPLAY_PATH = ./src/gameplay/
+GAMEPLAY_FILES = raycast.c
+GAMEPLAY_FILES += move.c
+GAMEPLAY_FILES += key_event.c
+GAMEPLAY_FILES += utils_ray.c
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_FILES))
 SRC += $(addprefix $(PARSE_PATH), $(PARSE_FILES))
 SRC += $(addprefix $(UTILS_PATH), $(UTILS_FILES))
-SRC += $(addprefix $(RAYCAST_PATH), $(RAYCAST_FILES))
+SRC += $(addprefix $(GAMEPLAY_PATH), $(GAMEPLAY_FILES))
 
 OBJS_DIR = obj
 OBJS = $(patsubst %.c, $(OBJS_DIR)/%.o, $(SRC))
 
-CFLAGS = -Wall -Wextra -Werror -g3 -Wno-cast-function-type
+CFLAGS = -Wall -Wextra -Werror -g3 #-Wno-cast-function-type
 
 # MiniLibX
 MLX_PATH    = ./libs/minilibx-linux/

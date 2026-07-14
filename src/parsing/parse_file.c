@@ -7,6 +7,8 @@ int	is_dir(char *arg)
 	fd = open(arg, O_DIRECTORY);
 	if (fd >= 0)
 	{
+		ft_putstr_fd("\n",2);
+		ft_putendl_fd(arg, 2);
 		close(fd);
 		return (1);
 	}
