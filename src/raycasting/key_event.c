@@ -9,15 +9,17 @@ int	close_hook(void *param)
 
 int	key_press(int keycode, void *param)
 {
-	((t_game *)param)->keys[keycode] = 1;
 	if (keycode == XK_Escape)
 		exit(0);
+	if (keycode >= 0 && keycode < 65536)
+		((t_game *)param)->keys[keycode] = 1;
 	return (0);
 }
 
 int	key_release(int keycode, void *param)
 {
-	((t_game *)param)->keys[keycode] = 0;
+	if (keycode >= 0 && keycode < 65536)
+		((t_game *)param)->keys[keycode] = 0;
 	return (0);
 }
 
