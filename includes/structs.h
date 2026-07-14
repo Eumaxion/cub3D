@@ -96,7 +96,7 @@ typedef struct s_ray
 	int		draw_end;
 
 	double  wall_x;
-	int     	tex_x;
+	int     	textures_x;
 }	t_ray;
 
 typedef struct s_game
@@ -110,7 +110,6 @@ typedef struct s_game
 	t_ray		ray;
 	t_img		screen;
 	t_texture	textures;
-	t_texture	tex;
 	t_colors	colors;
 	int		keys[65536];
 }	t_game;

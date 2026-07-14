@@ -1,9 +1,6 @@
 #ifndef PROTOTYPES_H
 # define PROTOTYPES_H
 
-// -MAIN
-int		main(int ac, char **av);
-
 //-PARSING:
 void	init_game(t_game *game);
 void	init_map(t_map *map_parse);
@@ -42,6 +39,8 @@ void		init_textures(t_game *g); */
 
 // raycaster.c
 void		render_frame(t_game *g);
+int 		init_mlx(t_game *g);
+void		init_textures(t_game *g);
 
 // draw.c
 void		img_pixel_put(t_img *img, int x, int y, int color);

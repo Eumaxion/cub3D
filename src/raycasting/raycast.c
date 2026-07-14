@@ -99,11 +99,11 @@ static void     calc_wall_height(t_game *g)
     r->wall_x -= floor(r->wall_x);  // fica entre 0.0 e 1.0
 
     // coluna da textura
-    r->tex_x = (int)(r->wall_x * g->tex.w);
+    r->textures_x = (int)(r->wall_x * g->textures.w);
     if (r->side == 0 && r->raydir_x > 0)
-        r->tex_x = g->tex.w - r->tex_x - 1;
+        r->textures_x = g->textures.w - r->textures_x - 1;
     if (r->side == 1 && r->raydir_y < 0)
-        r->tex_x = g->tex.w - r->tex_x - 1;
+        r->textures_x = g->textures.w - r->textures_x - 1;
 
     // altura
     r->line_height = (int)(WIN_H / r->perpwalldist);

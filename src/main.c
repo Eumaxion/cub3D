@@ -75,6 +75,12 @@ int     main(int ac, char **av)
 	init_game(&game);
 	if (parse_cub(av[1], &game))
 		return (clean_game(&game));
+	if (init_mlx(&game))          // ← novo
+		return (clean_game(&game));
+	init_textures(&game);          // ← carrega xpm com os paths do parser
+	game.map = game.map_parse.grid;
+	game.player.x += 0.5;
+	game.player.y += 0.5;
 	mlx_hook(game.win, 2, 1L<<0, (int(*)())key_press, &game);    // KeyPress
 	mlx_hook(game.win, 3, 1L<<1, (int(*)())key_release, &game);  // KeyRelease
 	mlx_hook(game.win, 17, 0, (int(*)())close_hook, &game);

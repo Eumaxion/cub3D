@@ -2,7 +2,7 @@
 
 int	print_error(char *arg, t_game *game, int clean)
 {
-	write(2, "Error\n", 7);
+	write(2, "Error\n", 6);
 	if (arg)
 	{
 		ft_putstr_fd(arg, 2);
