@@ -62,4 +62,5 @@ void	init_game(t_game *game)
 	init_img(&game->textures.south);
 	init_img(&game->textures.west);
 	init_img_colors(&game->colors);
+	ft_bzero(game->keys, sizeof(game->keys));
 }
