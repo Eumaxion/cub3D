@@ -1,51 +1,57 @@
-# include "../includes/cub3D.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_utils.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/23 20:14:51 by mlima-si          #+#    #+#             */
+/*   Updated: 2026/07/23 20:30:09 by mlima-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static int	is_player(char c)
+#include "../includes/cub3D.h"
+
+static void	set_north(t_game *game)
 {
-	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
+	game->player.dir_x = 0;
+	game->player.dir_y = -1;
+	game->player.plane_x = 0.66;
+	game->player.plane_y = 0;
 }
 
-static void	set_dir(t_game *game, char c)
+static void	set_south(t_game *game)
+{
+	game->player.dir_x = 0;
+	game->player.dir_y = 1;
+	game->player.plane_x = -0.66;
+	game->player.plane_y = 0;
+}
+
+static void	set_east(t_game *game)
+{
+	game->player.dir_x = 1;
+	game->player.dir_y = 0;
+	game->player.plane_x = 0;
+	game->player.plane_y = 0.66;
+}
+
+static void	set_west(t_game *game)
+{
+	game->player.dir_x = -1;
+	game->player.dir_y = 0;
+	game->player.plane_x = 0;
+	game->player.plane_y = -0.66;
+}
+
+void	set_dir(t_game *game, char c)
 {
 	if (c == 'N')
-		game->player.dir_x = 0, game->player.dir_y = -1,
-		game->player.plane_x = 0.66, game->player.plane_y = 0;
+		set_north(game);
 	else if (c == 'S')
-		game->player.dir_x = 0, game->player.dir_y = 1,
-		game->player.plane_x = -0.66, game->player.plane_y = 0;
+		set_south(game);
 	else if (c == 'E')
-		game->player.dir_x = 1, game->player.dir_y = 0,
-		game->player.plane_x = 0, game->player.plane_y = 0.66;
+		set_east(game);
 	else if (c == 'W')
-		game->player.dir_x = -1, game->player.dir_y = 0,
-		game->player.plane_x = 0, game->player.plane_y = -0.66;
-}
-
-int	check_player(t_game *game)
-{
-	int	x;
-	int	y;
-	int	count;
-
-	y = 0;
-	count = 0;
-	while (game->map_parse.grid[y])
-	{
-		x = 0;
-		while (game->map_parse.grid[y][x])
-		{
-			if (is_player(game->map_parse.grid[y][x]))
-			{
-				game->player.x = x;
-				game->player.y = y;
-				set_dir(game, game->map_parse.grid[y][x]);
-				count++;
-			}
-			x++;
-		}
-		y++;
-	}
-	if (count != 1)
-		return (print_error("Invalid player count.", NULL, 0));
-	return (EXIT_SUCCESS);
+		set_west(game);
 }

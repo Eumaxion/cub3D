@@ -1,4 +1,16 @@
-# include "../includes/cub3D.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/23 20:14:00 by mlima-si          #+#    #+#             */
+/*   Updated: 2026/07/23 20:30:53 by mlima-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/cub3D.h"
 
 int	is_dir(char *arg)
 {
@@ -7,13 +19,13 @@ int	is_dir(char *arg)
 	fd = open(arg, O_DIRECTORY);
 	if (fd >= 0)
 	{
-		ft_putstr_fd("\n",2);
+		ft_putstr_fd("\n", 2);
 		ft_putendl_fd(arg, 2);
 		close(fd);
 		return (1);
 	}
 	return (0);
-}	
+}
 
 int	cub_extension(char *file)
 {
@@ -21,17 +33,17 @@ int	cub_extension(char *file)
 
 	i = ft_strlen(file) - 1;
 	if (!i)
-		return(1);
+		return (1);
 	while (file[i] != '.' && file[i] && i)
 		--i;
-	if (!file[i++] || file[i] !=  'c')
+	if (!file[i++] || file[i] != 'c')
 		return (1);
-	if (!file[i++] || file[i] !=  'u')
+	if (!file[i++] || file[i] != 'u')
 		return (1);
- 	if (!file[i++] || file[i] !=  'b')
+	if (!file[i++] || file[i] != 'b')
 		return (1);
 	if (file[++i] != 0)
-		return(1);
+		return (1);
 	return (0);
 }
 
@@ -41,14 +53,14 @@ int	xpm_extension(char *file)
 
 	i = ft_strlen(file) - 1;
 	if (!i)
-		return(1);
+		return (1);
 	while (file[i] != '.' && file[i] && i)
 		i--;
-	if (!file[i++] || file[i] !=  'x')
+	if (!file[i++] || file[i] != 'x')
 		return (1);
-	if (!file[i++] || file[i] !=  'p')
+	if (!file[i++] || file[i] != 'p')
 		return (1);
-	if (!file[i++] || file[i] !=  'm')
+	if (!file[i++] || file[i] != 'm')
 		return (1);
 	if (file[++i] != 0)
 		return (1);
@@ -67,23 +79,15 @@ int	file_test(char *file, int type)
 		return (print_error(IS_DIRECTORY, NULL, 0));
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return(print_error(strerror(errno), NULL, 0));
+		return (print_error(strerror(errno), NULL, 0));
 	close(fd);
 	return (EXIT_SUCCESS);
 }
-// open .cub;
-
-// check only 0 1 orientation (N,E,S,W);
-	//The map must be closed/surrounded by walls, if not the program must returnan error. (flod fill);
-	//Except for the map content, each type of element can be separated by one or more empty lines.
-	//Except for the map content which always has to be the last, each type of element can be set in any order in the file.
-	//Except for the map, each type of information from an element can be separated by one or more spaces.
-	//R,G,B colors in range [0,255]: 0, 255, 255
 
 int	parse_cub(char *av, t_game *game)
 {
 	char	**file;
-	
+
 	if (file_test(av, CUB_FILE))
 		return (EXIT_FAILURE);
 	file = read_file(av);

@@ -22,10 +22,12 @@ int		print_error(char *arg, t_game *game, int clean);
 int		clean_game(t_game *game);
 
 //-MAP VALIDATION
-int	validate_map(t_game *game);
-int	check_chars(t_game *game);
-int	check_player(t_game *game);
-int	check_closed(t_game *game);
+int		validate_map(t_game *game);
+int		check_chars(t_game *game);
+int		check_player(t_game *game);
+int		check_closed(t_game *game);
+void	set_dir(t_game *game, char c);
+int		is_player(char c);
 
 // move.c
 void		move_forward_back(t_game *g, int dir);
