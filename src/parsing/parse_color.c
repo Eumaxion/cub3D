@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:13:31 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/23 20:13:35 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/25 17:24:08 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	parse_color(t_game *game, char *line)
 	else
 		color = &game->colors.ceiling;
 	if (*color != -1)
-		return (print_error("Duplicate color.", NULL, 0));
+		return (print_error(DUP_COLOR, NULL, 0));
 	i += 1;
 	while (line[i] == ' ')
 		i++;

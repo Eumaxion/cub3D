@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 17:13:37 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/23 20:30:33 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/25 17:27:29 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	check_player(t_game *game)
 		y++;
 	}
 	if (count != 1)
-		return (print_error("Invalid player count.", NULL, 0));
+		return (print_error(PLAYER_N, NULL, 0));
 	return (EXIT_SUCCESS);
 }
 
@@ -87,7 +87,7 @@ int	check_chars(t_game *game)
 		while (game->map_parse.grid[y][x])
 		{
 			if (!is_valid_char(game->map_parse.grid[y][x]))
-				return (print_error("Invalid map character.", NULL, 0));
+				return (print_error(MAP_CHAR, NULL, 0));
 			x++;
 		}
 		y++;

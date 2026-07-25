@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:14:18 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/23 20:14:23 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/25 17:25:27 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	set_texture(t_img *img, char *line)
 	char	*path;
 
 	if (img->path)
-		return (print_error("Duplicate texture.", NULL, 0));
+		return (print_error(DUP_TXT, NULL, 0));
 	path = get_path(line);
 	if (!path)
 		return (EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:38:01 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/25 17:06:59 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/25 17:20:59 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ int	init_mlx(t_game *g)
 {
 	g->mlx = mlx_init();
 	if (!g->mlx)
-		return (print_error("mlx_init failed", NULL, 0));
+		return (print_error(MLX_ERR, NULL, 0));
 	g->win = mlx_new_window(g->mlx, WIN_W, WIN_H, "cub3D");
 	if (!g->win)
-		return (print_error("mlx_new_window failed", NULL, 0));
+		return (print_error(MLX_FAIL, NULL, 0));
 	g->screen.img = mlx_new_image(g->mlx, WIN_W, WIN_H);
 	g->screen.addr = mlx_get_data_addr(g->screen.img,
 			&g->screen.bpp, &g->screen.line_len, &g->screen.endian);

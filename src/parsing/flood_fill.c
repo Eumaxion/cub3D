@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:12:18 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/23 20:13:03 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/25 17:23:30 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ int	check_closed(t_game *game)
 	ret = flood(copy, x, y);
 	free_matrix(copy);
 	if (ret)
-		return (print_error("Map is not closed.", NULL, 0));
+		return (print_error(MAP_UNCLOSED, NULL, 0));
 	return (EXIT_SUCCESS);
 }
