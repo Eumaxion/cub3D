@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/23 20:47:32 by mlima-si          #+#    #+#             */
+/*   Updated: 2026/07/23 20:47:35 by mlima-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3D.h"
 
 void	move_forward_back(t_game *g, int dir)
@@ -41,7 +53,7 @@ void	rotate(t_game *g, int dir)
 	angle = ROT_SPEED * dir;
 	old_dir_x = p->dir_x;
 	p->dir_x = p->dir_x * cos(angle) - p->dir_y * sin(angle);
-	p->dir_y = old_dir_x  * sin(angle) + p->dir_y * cos(angle);
+	p->dir_y = old_dir_x * sin(angle) + p->dir_y * cos(angle);
 	old_plane_x = p->plane_x;
 	p->plane_x = p->plane_x * cos(angle) - p->plane_y * sin(angle);
 	p->plane_y = old_plane_x * sin(angle) + p->plane_y * cos(angle);

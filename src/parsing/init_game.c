@@ -6,13 +6,13 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:13:22 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/23 20:13:26 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/25 17:11:30 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	init_player(t_player *player)
+static void	init_player(t_player *player)
 {
 	player->angle = 0.0;
 	player->dir_x = 0.0;
@@ -23,7 +23,7 @@ void	init_player(t_player *player)
 	player->y = 0.0;
 }
 
-void	init_ray(t_ray *ray)
+static void	init_t_ray(t_ray *ray)
 {
 	ray->camera_x = 0.0;
 	ray->raydir_x = 0.0;
@@ -44,13 +44,13 @@ void	init_ray(t_ray *ray)
 	ray->draw_end = 0;
 }
 
-void	init_img_colors(t_colors *colors)
+static void	init_img_colors(t_colors *colors)
 {
 	colors->ceiling = -1;
 	colors->floor = -1;
 }
 
-void	init_img(t_img *image)
+static void	init_img(t_img *image)
 {
 	image->img = NULL;
 	image->addr = NULL;
@@ -67,7 +67,7 @@ void	init_game(t_game *game)
 	game->map_path = NULL;
 	init_player(&game->player);
 	init_map(&game->map_parse);
-	init_ray(&game->ray);
+	init_t_ray(&game->ray);
 	init_img(&game->screen);
 	init_img(&game->textures.east);
 	init_img(&game->textures.north);

@@ -24,6 +24,7 @@ GAMEPLAY_FILES = raycast.c
 GAMEPLAY_FILES += move.c
 GAMEPLAY_FILES += key_event.c
 GAMEPLAY_FILES += utils_ray.c
+GAMEPLAY_FILES += init_gameplay.c
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_FILES))
 SRC += $(addprefix $(PARSE_PATH), $(PARSE_FILES))

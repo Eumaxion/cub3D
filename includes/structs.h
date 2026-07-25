@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/25 16:53:57 by mlima-si          #+#    #+#             */
+/*   Updated: 2026/07/25 16:55:07 by mlima-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
@@ -39,8 +51,8 @@ typedef struct s_texture
 	t_img	south;
 	t_img	west;
 	t_img	east;
-	int	w;
-	int	h;
+	int		w;
+	int		h;
 }	t_texture;
 
 typedef struct s_player
@@ -65,38 +77,38 @@ typedef struct s_colors
 	int	ceiling_set;
 }	t_colors;
 
-/* -------------------------------------------------------------------------------------------------- */
+typedef struct s_draw
+{
+	t_ray	*r;
+	t_img	*tex;
+	double	step;
+	double	tex_pos;
+	int		tex_y;
+	int		color;
+	int		y;
+}	t_draw;
 
 typedef struct s_ray
 {
 	double	camera_x;
-
 	double	raydir_x;
 	double	raydir_y;
-
 	int		map_x;
 	int		map_y;
-
 	double	sidedist_x;
 	double	sidedist_y;
-
 	double	deltadist_x;
 	double	deltadist_y;
-
 	double	perpwalldist;
-
 	int		step_x;
 	int		step_y;
-
 	int		hit;
 	int		side;
-
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-
-	double  wall_x;
-	int     	textures_x;
+	double	wall_x;
+	int		textures_x;
 }	t_ray;
 
 typedef struct s_game
@@ -111,7 +123,7 @@ typedef struct s_game
 	t_img		screen;
 	t_texture	textures;
 	t_colors	colors;
-	int		keys[65536];
+	int			keys[65536];
 }	t_game;
 
 #endif

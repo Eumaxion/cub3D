@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   prototypes.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/25 16:55:56 by mlima-si          #+#    #+#             */
+/*   Updated: 2026/07/25 17:03:41 by mlima-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PROTOTYPES_H
 # define PROTOTYPES_H
 
@@ -30,23 +42,19 @@ void	set_dir(t_game *game, char c);
 int		is_player(char c);
 
 // move.c
-void		move_forward_back(t_game *g, int dir);
-void		move_strafe(t_game *g, int dir);
-void		rotate(t_game *g, int dir);
-
-// init.c
-/* void		init_game(t_game *g);
-void		init_player(t_game *g);
-void		init_textures(t_game *g); */
+void	move_forward_back(t_game *g, int dir);
+void	move_strafe(t_game *g, int dir);
+void	rotate(t_game *g, int dir);
 
 // raycaster.c
-void		render_frame(t_game *g);
-int 		init_mlx(t_game *g);
-void		init_textures(t_game *g);
+void	render_frame(t_game *g);
+int		init_mlx(t_game *g);
+void	init_textures(t_game *g);
+void	init_ray(t_game *g, int x);
 
 // draw.c
-void		img_pixel_put(t_img *img, int x, int y, int color);
-void		draw_column(t_game *g, int x);
+void	img_pixel_put(t_img *img, int x, int y, int color);
+void	draw_column(t_game *g, int x);
 
 // main.c
 int		key_press(int keycode, void *param);
