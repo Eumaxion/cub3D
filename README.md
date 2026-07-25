@@ -1,7 +1,7 @@
 *This project has been created as part of the 42 curriculum by mlima-si, dedantas.*
 
 # cub3D
-
+![Gameplay](assets/textures/gameplay.gif)
 ## Description
 
 **cub3D** is a 3D graphics project from the 42 curriculum inspired by the rendering technique used in the classic game **Wolfenstein 3D**.
