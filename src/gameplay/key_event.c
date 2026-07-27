@@ -14,15 +14,21 @@
 
 int	close_hook(void *param)
 {
-	(void)param;
+	t_game	*g;
+
+	g = (t_game *)param;
 	printf("Game closed by window\n");
+	clean_game(g);
 	exit(0);
 }
 
 int	key_press(int keycode, void *param)
 {
 	if (keycode == XK_Escape)
+	{
+		clean_game((t_game *)param);
 		exit(0);
+	}
 	if (keycode >= 0 && keycode < 65536)
 		((t_game *)param)->keys[keycode] = 1;
 	return (0);
