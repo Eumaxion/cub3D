@@ -66,7 +66,19 @@ static void	calc_step_sidedist(t_game *g)
 	}
 }
 
-//calcula altura da coluna a desenhar
+static void	calc_texture(t_game *g)
+{
+	t_ray	*r;
+
+	r = &g->ray;
+	r->wall_x -= floor(r->wall_x);
+	r->textures_x = (int)(r->wall_x * g->textures.w);
+	if (r->side == 0 && r->raydir_x > 0)
+		r->textures_x = g->textures.w - r->textures_x - 1;
+	if (r->side == 1 && r->raydir_y < 0)
+		r->textures_x = g->textures.w - r->textures_x - 1;
+}
+
 static void	calc_wall_height(t_game *g)
 {
 	t_ray		*r;
@@ -84,12 +96,7 @@ static void	calc_wall_height(t_game *g)
 		r->perpwalldist = r->sidedist_y - r->deltadist_y;
 		r->wall_x = p->x + r->perpwalldist * r->raydir_x;
 	}
-	r->wall_x -= floor(r->wall_x);
-	r->textures_x = (int)(r->wall_x * g->textures.w);
-	if (r->side == 0 && r->raydir_x > 0)
-		r->textures_x = g->textures.w - r->textures_x - 1;
-	if (r->side == 1 && r->raydir_y < 0)
-		r->textures_x = g->textures.w - r->textures_x - 1;
+	calc_texture(g);
 	r->line_height = (int)(WIN_H / r->perpwalldist);
 	r->draw_start = WIN_H / 2 - r->line_height / 2;
 	if (r->draw_start < 0)
