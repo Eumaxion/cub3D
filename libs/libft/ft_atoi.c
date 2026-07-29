@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:18:07 by mlima-si          #+#    #+#             */
-/*   Updated: 2025/04/21 13:16:40 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/29 15:14:16 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ int	ft_atoi(const char *nptr)
 		result = result * 10 + (nptr[i] - 48);
 		i++;
 	}
+	if (nptr[i])
+		return (-1);
 	return (result * negt);
 }

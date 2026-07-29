@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:53:11 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/29 13:34:24 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/29 15:18:28 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define MAP_CHAR "Invalid map character.\n"
 # define MLX_ERR "mlx_init failed.\n"
 # define MLX_FAIL "mlx_new_window failed.\n"
+# define INVALID_RGB "Invalid RGB.\n"
 # define SAME_COLOR "Floor and ceiling colors cannot be equal.\n"
 
 # define CUB_FILE 1
