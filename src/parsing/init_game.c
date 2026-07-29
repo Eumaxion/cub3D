@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:13:22 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/25 17:11:30 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/29 15:16:21 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	init_game(t_game *game)
 {
 	game->map = NULL;
 	game->win = NULL;
+	game->mlx = NULL;
 	game->map_path = NULL;
 	init_player(&game->player);
 	init_map(&game->map_parse);

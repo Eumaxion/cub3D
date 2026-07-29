@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:13:31 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/25 17:24:08 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/29 15:20:23 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ static int	parse_rgb(char *str, int *color)
 	b = ft_atoi(rgb[2]);
 	free_matrix(rgb);
 	if (r < 0 || r > 255)
-		return (EXIT_FAILURE);
+		return (print_error(INVALID_RGB, NULL, 0));
 	if (g < 0 || g > 255)
-		return (EXIT_FAILURE);
+		return (print_error(INVALID_RGB, NULL, 0));
 	if (b < 0 || b > 255)
-		return (EXIT_FAILURE);
+		return (print_error(INVALID_RGB, NULL, 0));
 	*color = create_color(r, g, b);
 	return (EXIT_SUCCESS);
 }
@@ -56,5 +56,9 @@ int	parse_color(t_game *game, char *line)
 	i += 1;
 	while (line[i] == ' ')
 		i++;
-	return (parse_rgb(line + i, color));
+	if (parse_rgb(line + i, color))
+		return (EXIT_FAILURE);
+	if (game->colors.floor == game->colors.ceiling)
+		return (print_error(SAME_COLOR, NULL, 0));
+	return (EXIT_SUCCESS);
 }

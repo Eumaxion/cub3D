@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:34:15 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/23 20:39:58 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/29 13:48:08 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,10 @@ int	clean_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->screen.img);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 	return (1);
 }

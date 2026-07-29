@@ -34,7 +34,7 @@ SRC += $(addprefix $(GAMEPLAY_PATH), $(GAMEPLAY_FILES))
 OBJS_DIR = obj
 OBJS = $(patsubst %.c, $(OBJS_DIR)/%.o, $(SRC))
 
-CFLAGS = -Wall -Wextra -Werror -g3 -Wno-cast-function-type
+CFLAGS = -Wall -Wextra -Werror -g3 #-Wno-cast-function-type
 
 # MiniLibX
 MLX_PATH    = ./libs/minilibx-linux/
