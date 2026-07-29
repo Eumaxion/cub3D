@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:13:31 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/25 17:24:08 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/29 13:14:18 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,9 @@ int	parse_color(t_game *game, char *line)
 	i += 1;
 	while (line[i] == ' ')
 		i++;
-	return (parse_rgb(line + i, color));
+	if (parse_rgb(line + i, color))
+		return (EXIT_FAILURE);
+	if (game->colors.floor == game->colors.ceiling)
+		return (print_error(SAME_COLOR, NULL, 0));
+	return (EXIT_SUCCESS);
 }

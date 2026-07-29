@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:53:11 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/25 17:27:47 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/29 13:34:24 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@
 # define XPM_ERROR "Invalid xpm.\n"
 # define IS_DIRECTORY "The file is a directory.\n"
 # define MAP_UNCLOSED "Map is not closed.\n"
-# define DUP_COLOR "Duplicate color.\n"
-# define DUP_TXT "Duplicate texture.\n"
+# define DUP_COLOR "Duplicated cealing/floor.\n"
+# define DUP_TXT "Duplicated texture.\n"
+# define DUP_PATH "Duplicated path.\n"
 # define PLAYER_N "Invalid player number.\n"
 # define MAP_CHAR "Invalid map character.\n"
 # define MLX_ERR "mlx_init failed.\n"
 # define MLX_FAIL "mlx_new_window failed.\n"
+# define SAME_COLOR "Floor and ceiling colors cannot be equal.\n"
 
 # define CUB_FILE 1
 # define XPM_FILE 0
