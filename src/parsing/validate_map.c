@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 17:13:37 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/25 17:27:29 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/30 16:15:25 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ int	is_valid_char(char c)
 		return (1);
 	if (c == '\n')
 		return (1);
+	if (BONUS)
+		if (c == 'M')
+			return (1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:53:57 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/25 16:55:07 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/30 16:44:51 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,12 @@ typedef struct s_player
 {
 	double	x;
 	double	y;
-
 	double	dir_x;
 	double	dir_y;
-
 	double	plane_x;
 	double	plane_y;
-
 	double	angle;
+	int		moved;
 }	t_player;
 
 typedef struct s_colors
@@ -109,6 +107,7 @@ typedef struct s_ray
 	int		draw_end;
 	double	wall_x;
 	int		textures_x;
+	int		special;
 }	t_ray;
 
 typedef struct s_game
@@ -117,6 +116,7 @@ typedef struct s_game
 	void		*win;
 	char		**map;
 	char		*map_path;
+	int			ignore_mouse;
 	t_map		map_parse;
 	t_player	player;
 	t_ray		ray;

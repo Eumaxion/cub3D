@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:55:56 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/25 17:03:41 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/30 16:46:12 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		is_player(char c);
 // move.c
 void	move_forward_back(t_game *g, int dir);
 void	move_strafe(t_game *g, int dir);
-void	rotate(t_game *g, int dir);
+void	rotate(t_game *g, double angle);
 
 // raycaster.c
 void	render_frame(t_game *g);
@@ -62,5 +62,8 @@ int		key_release(int keycode, void *param);
 int		close_hook(void *param);
 int		render_loop(void *param);
 int		main(int ac, char **av);
+
+// bonus
+int	mouse_handler(int x, int y, t_game *game);
 
 #endif

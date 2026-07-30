@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:47:39 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/25 17:08:54 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/30 16:18:41 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ static void	dda(t_game *g)
 		}
 		if (g->map[r->map_y][r->map_x] == '1')
 			r->hit = 1;
+		if (g->map[r->map_y][r->map_x] == 'M')
+			r->special = 1;
+		else
+			r->special = 0;
 	}
 }
 
@@ -121,4 +125,6 @@ void	render_frame(t_game *g)
 		x++;
 	}
 	mlx_put_image_to_window(g->mlx, g->win, g->screen.img, 0, 0);
+/* 	if (BONUS)
+		draw_minimap(); */
 }

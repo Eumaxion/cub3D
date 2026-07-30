@@ -1,5 +1,7 @@
 NAME = cub3D
 
+BONUS = 0
+
 SRC_PATH = ./src/
 SRC_FILES = main.c
 
@@ -25,6 +27,9 @@ GAMEPLAY_FILES += move.c
 GAMEPLAY_FILES += key_event.c
 GAMEPLAY_FILES += utils_ray.c
 GAMEPLAY_FILES += init_gameplay.c
+GAMEPLAY_FILES += mouse.c
+
+BONUS_PATH = ./src/
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_FILES))
 SRC += $(addprefix $(PARSE_PATH), $(PARSE_FILES))
@@ -34,7 +39,8 @@ SRC += $(addprefix $(GAMEPLAY_PATH), $(GAMEPLAY_FILES))
 OBJS_DIR = obj
 OBJS = $(patsubst %.c, $(OBJS_DIR)/%.o, $(SRC))
 
-CFLAGS = -Wall -Wextra -Werror -g3 #-Wno-cast-function-type
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g3  #-fsanitize=address #-Wno-cast-function-type
 
 # MiniLibX
 MLX_PATH    = ./libs/minilibx-linux/
@@ -72,11 +78,15 @@ $(OBJS_DIR):
 
 $(OBJS_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	@$(CC) $(CFLAGS) -DBONUS=$(BONUS) $(INC) -c $< -o $@
 
 $(NAME): $(OBJS_DIR) $(OBJS)
-	@$(CC) $(CFLAGS) $(INC) $(OBJS) $(LIB) $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) -DBONUS=$(BONUS) $(INC) $(OBJS) $(LIB) $(MLX_FLAGS) -o $(NAME)
 	@echo "$(GREEN)\n Compilation completed!\n$(RESET)"
+
+bonus:
+	@make all BONUS=1
+	@echo "$(GREEN)\n Bonus compilation completed!\n$(RESET)"
 
 clean:
 	@make clean -C $(LIB_PATH)
@@ -90,4 +100,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
