@@ -61,8 +61,8 @@ int	check_player(t_game *game)
 		{
 			if (is_player(game->map_parse.grid[y][x]))
 			{
-				game->player.x = x;
-				game->player.y = y;
+				game->player.x = x + 0.5;
+				game->player.y = y + 0.5;
 				set_dir(game, game->map_parse.grid[y][x]);
 				count++;
 			}

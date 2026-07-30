@@ -38,6 +38,7 @@ int		validate_map(t_game *game);
 int		check_chars(t_game *game);
 int		check_player(t_game *game);
 int		check_closed(t_game *game);
+int		is_wall(char **map, int x, int y);
 void	set_dir(t_game *game, char c);
 int		is_player(char c);
 

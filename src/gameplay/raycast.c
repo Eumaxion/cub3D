@@ -32,7 +32,7 @@ static void	dda(t_game *g)
 			r->map_y += r->step_y;
 			r->side = 1;
 		}
-		if (g->map[r->map_y][r->map_x] == '1')
+		if (is_wall(g->map, r->map_x, r->map_y))
 			r->hit = 1;
 	}
 }
@@ -73,6 +73,10 @@ static void	calc_texture(t_game *g)
 	r = &g->ray;
 	r->wall_x -= floor(r->wall_x);
 	r->textures_x = (int)(r->wall_x * g->textures.w);
+	if (r->textures_x < 0)
+		r->textures_x = 0;
+	if (r->textures_x >= g->textures.w)
+		r->textures_x = g->textures.w - 1;
 	if (r->side == 0 && r->raydir_x > 0)
 		r->textures_x = g->textures.w - r->textures_x - 1;
 	if (r->side == 1 && r->raydir_y < 0)
