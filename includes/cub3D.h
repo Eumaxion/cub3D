@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:53:11 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/30 16:52:23 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/31 13:01:08 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@
 # define WIN_W 800
 # define WIN_H 600
 # define MOV_SPEED 0.010
-# define ROT_SPEED 0.006
+# define ROT_SPEED 0.003
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:43:13 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/30 15:13:45 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/31 12:59:16 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int	render_loop(void *param)
 	if (g->keys[XK_d] || g->keys[XK_D])
 		move_strafe(g, -1);
 	if (g->keys[XK_Left])
-		rotate(g, -1);
+		rotate(g, -ROT_SPEED);
 	if (g->keys[XK_Right])
-		rotate(g, 1);
+		rotate(g, ROT_SPEED);
 	if (g->player.moved == 0)
 		return (0);
 	render_frame(g);
