@@ -1,7 +1,7 @@
-NO ./assets/textures/north2.xpm
-SO ./assets/textures/south2.xpm
-WE ./assets/textures/west2.xpm
-EA ./assets/textures/east2.xpm
+NO ./assets/textures/no.xpm
+SO ./assets/textures/so.xpm
+WE ./assets/textures/we.xpm
+EA ./assets/textures/ea.xpm
 
 F 45,35,25
 C 20,20,35

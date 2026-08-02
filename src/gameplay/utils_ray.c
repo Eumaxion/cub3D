@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:47:45 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/25 16:48:07 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/08/02 16:19:35 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	get_tex_color(t_img *tex, int tex_x, int tex_y)
 	return (*(unsigned int *)dst);
 }
 
-static t_img	*get_wall_texture(t_game *g)
+t_img	*get_wall_texture(t_game *g)
 {
 	t_ray	*r;
 

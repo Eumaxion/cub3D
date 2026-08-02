@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:55:56 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/30 16:46:12 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/08/02 17:22:21 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		is_color(char *line);
 int		parse_color(t_game *game, char *line);
 int		parse_map(t_game *game, char **file);
 void	free_matrix(char **matrix);
+int		validate_xpms(t_game *game);
 
 //-ERROR && CLEANING: 
 int		print_error(char *arg, t_game *game, int clean);
@@ -55,6 +56,7 @@ void	init_ray(t_game *g, int x);
 
 // draw.c
 void	img_pixel_put(t_img *img, int x, int y, int color);
+t_img	*get_wall_texture(t_game *g);
 void	draw_column(t_game *g, int x);
 
 // main.c

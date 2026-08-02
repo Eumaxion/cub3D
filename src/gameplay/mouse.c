@@ -6,13 +6,11 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/30 15:46:36 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/30 16:56:02 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/08/02 13:45:40 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-
-t_img *get_special_texture(t_game *g);
 
 int	mouse_handler(int x, int y, t_game *game)
 {
