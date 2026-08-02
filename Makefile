@@ -16,6 +16,7 @@ PARSE_FILES += read_file.c
 PARSE_FILES += parse_elements.c
 PARSE_FILES += validate_map.c
 PARSE_FILES += validate_utils.c
+PARSE_FILES += validate_xpm.c
 
 UTILS_PATH = ./src/utils/
 UTILS_FILES = errors.c

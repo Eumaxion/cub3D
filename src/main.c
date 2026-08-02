@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:52:50 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/30 16:03:19 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/08/02 17:40:27 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	main(int ac, char **av)
 		return (clean_game(&game));
 	if (init_mlx(&game))
 		return (clean_game(&game));
+	if (validate_xpms(&game))
+		return (EXIT_FAILURE);
 	init_textures(&game);
 	game.map = game.map_parse.grid;
 	render_frame(&game);

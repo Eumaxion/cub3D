@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 17:13:37 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/30 16:15:25 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/08/02 17:40:09 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int	check_player(t_game *game)
 		{
 			if (is_player(game->map_parse.grid[y][x]))
 			{
-				game->player.x = x;
-				game->player.y = y;
+				game->player.x = x + 0.5;
+				game->player.y = y + 0.5;
 				set_dir(game, game->map_parse.grid[y][x]);
 				count++;
 			}

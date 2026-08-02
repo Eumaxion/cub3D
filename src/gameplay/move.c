@@ -21,9 +21,9 @@ void	move_forward_back(t_game *g, int dir)
 	p = &g->player;
 	new_x = p->x + p->dir_x * MOV_SPEED * dir;
 	new_y = p->y + p->dir_y * MOV_SPEED * dir;
-	if (g->map[(int)p->y][(int)new_x] != '1')
+	if (!is_wall(g->map, (int)new_x, (int)p->y))
 		p->x = new_x;
-	if (g->map[(int)new_y][(int)p->x] != '1')
+	if (!is_wall(g->map, (int)p->x, (int)new_y))
 		p->y = new_y;
 	g->player.moved = 1;
 }
@@ -37,9 +37,9 @@ void	move_strafe(t_game *g, int dir)
 	p = &g->player;
 	new_x = p->x + p->dir_y * MOV_SPEED * dir;
 	new_y = p->y - p->dir_x * MOV_SPEED * dir;
-	if (g->map[(int)p->y][(int)new_x] != '1')
+	if (!is_wall(g->map, (int)new_x, (int)p->y))
 		p->x = new_x;
-	if (g->map[(int)new_y][(int)p->x] != '1')
+	if (!is_wall(g->map, (int)p->x, (int)new_y))
 		p->y = new_y;
 	g->player.moved = 1;
 }

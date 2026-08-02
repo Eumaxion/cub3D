@@ -6,11 +6,25 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:47:45 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/25 16:48:07 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/08/02 16:19:35 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+
+int	is_wall(char **map, int x, int y)
+{
+	int	len;
+
+	if (y < 0 || x < 0 || !map[y])
+		return (1);
+	len = (int)ft_strlen(map[y]);
+	if (len > 0 && map[y][len - 1] == '\n')
+		len--;
+	if (x >= len)
+		return (1);
+	return (map[y][x] == '1');
+}
 
 void	img_pixel_put(t_img *img, int x, int y, int color)
 {
@@ -30,7 +44,7 @@ static int	get_tex_color(t_img *tex, int tex_x, int tex_y)
 	return (*(unsigned int *)dst);
 }
 
-static t_img	*get_wall_texture(t_game *g)
+t_img	*get_wall_texture(t_game *g)
 {
 	t_ray	*r;
 
@@ -45,33 +59,6 @@ static t_img	*get_wall_texture(t_game *g)
 		return (&g->textures.south);
 	return (&g->textures.north);
 }
-/* void	draw_column(t_game *g, int x)
-{
-	t_ray	*r;
-	t_img	*tex;
-	double	step;
-	double	tex_pos;
-	int		tex_y;
-	int		color;
-	int		y;
-
-	r = &g->ray;
-	tex = get_wall_texture(g);
-	step = 1.0 * g->textures.h / r->line_height;
-	tex_pos = (r->draw_start - WIN_H / 2 + r->line_height / 2) * step;
-	y = 0;
-	while (y < r->draw_start)
-		img_pixel_put(&g->screen, x, y++, g->colors.ceiling);
-	while (y <= r->draw_end)
-	{
-		tex_y = (int)tex_pos & (g->textures.h - 1);
-		tex_pos += step;
-		color = get_tex_color(tex, r->textures_x, tex_y);
-		img_pixel_put(&g->screen, x, y++, color);
-	}
-	while (y < WIN_H)
-		img_pixel_put(&g->screen, x, y++, g->colors.floor);
-} */
 
 void	draw_column(t_game *g, int x)
 {
