@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:53:11 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/29 15:18:28 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/31 13:01:08 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include "structs.h"
 # include "prototypes.h"
 
-// MACROS 
+// MACROS
 
 # define USAGE_ERR "USAGE: ./cub3d map.cub.\n"
 # define EXTENSION_ERR "Invalid file, EXAMPLE.cub required.\n"
@@ -50,12 +50,18 @@
 # define CUB_FILE 1
 # define XPM_FILE 0
 
+# ifndef BONUS
+#  define BONUS 1
+# endif
+
 # ifndef O_DIRECTORY
 #  define O_DIRECTORY 00200000
 # endif
-# define WIN_W  800
-# define WIN_H  600
-# define MOV_SPEED   0.007
-# define ROT_SPEED   0.006
+
+# define MOUSE_SENSITIVITY 0.00025
+# define WIN_W 800
+# define WIN_H 600
+# define MOV_SPEED 0.010
+# define ROT_SPEED 0.003
 
 #endif

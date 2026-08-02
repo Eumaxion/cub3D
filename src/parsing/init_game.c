@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:13:22 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/29 15:16:21 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/30 16:45:09 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	init_player(t_player *player)
 	player->plane_y = 0.0;
 	player->x = 0.0;
 	player->y = 0.0;
+	player->moved = 0;
 }
 
 static void	init_t_ray(t_ray *ray)
@@ -42,6 +43,7 @@ static void	init_t_ray(t_ray *ray)
 	ray->line_height = 0;
 	ray->draw_start = 0;
 	ray->draw_end = 0;
+	ray->special = 0;
 }
 
 static void	init_img_colors(t_colors *colors)
@@ -66,6 +68,7 @@ void	init_game(t_game *game)
 	game->win = NULL;
 	game->mlx = NULL;
 	game->map_path = NULL;
+	game->ignore_mouse = 0;
 	init_player(&game->player);
 	init_map(&game->map_parse);
 	init_t_ray(&game->ray);

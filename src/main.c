@@ -6,11 +6,21 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:52:50 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/25 16:58:43 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/30 16:03:19 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+
+static void	wait_for_input(t_game *game)
+{
+	mlx_hook(game->win, KeyPress, KeyPressMask, (int (*)()) key_press, game);
+	mlx_hook(game->win, KeyRelease, KeyReleaseMask, (int (*)()) key_release, game);
+	mlx_hook(game->win, 17, 0, (int (*)()) close_hook, game);
+	if (BONUS)
+		mlx_hook(game->win, MotionNotify, PointerMotionMask,
+			mouse_handler, game);
+}
 
 int	main(int ac, char **av)
 {
@@ -25,9 +35,8 @@ int	main(int ac, char **av)
 		return (clean_game(&game));
 	init_textures(&game);
 	game.map = game.map_parse.grid;
-	mlx_hook(game.win, 2, 1L << 0, (int (*)()) key_press, &game);
-	mlx_hook(game.win, 3, 1L << 1, (int (*)()) key_release, &game);
-	mlx_hook(game.win, 17, 0, (int (*)()) close_hook, &game);
+	render_frame(&game);
+	wait_for_input(&game);
 	mlx_loop_hook(game.mlx, (int (*)()) render_loop, &game);
 	mlx_loop(game.mlx);
 	return (0);

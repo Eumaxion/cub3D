@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:47:32 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/23 20:47:35 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/07/30 16:44:09 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	move_forward_back(t_game *g, int dir)
 		p->x = new_x;
 	if (!is_wall(g->map, (int)p->x, (int)new_y))
 		p->y = new_y;
+	g->player.moved = 1;
 }
 
 void	move_strafe(t_game *g, int dir)
@@ -40,9 +41,26 @@ void	move_strafe(t_game *g, int dir)
 		p->x = new_x;
 	if (!is_wall(g->map, (int)p->x, (int)new_y))
 		p->y = new_y;
+	g->player.moved = 1;
 }
 
-void	rotate(t_game *g, int dir)
+void	rotate(t_game *g, double angle)
+{
+	t_player	*p;
+	double		old_dir_x;
+	double		old_plane_x;
+
+	p = &g->player;
+	old_dir_x = p->dir_x;
+	p->dir_x = p->dir_x * cos(angle) - p->dir_y * sin(angle);
+	p->dir_y = old_dir_x * sin(angle) + p->dir_y * cos(angle);
+	old_plane_x = p->plane_x;
+	p->plane_x = p->plane_x * cos(angle) - p->plane_y * sin(angle);
+	p->plane_y = old_plane_x * sin(angle) + p->plane_y * cos(angle);
+	p->moved = 1;
+}
+
+/* void	rotate(t_game *g, int dir)
 {
 	t_player	*p;
 	double		old_dir_x;
@@ -57,29 +75,5 @@ void	rotate(t_game *g, int dir)
 	old_plane_x = p->plane_x;
 	p->plane_x = p->plane_x * cos(angle) - p->plane_y * sin(angle);
 	p->plane_y = old_plane_x * sin(angle) + p->plane_y * cos(angle);
-}
-
-/*int	key_handler(int keycode, void *param)
-{
-	t_game	*g;
-
-	g = (t_game *)param;
-	if (keycode == XK_Escape)
-	{
-		printf("Game closed!\n");
-		exit(0);
-	}
-	else if (keycode == XK_w || keycode == XK_W)
-		move_forward_back(g, 1);
-	else if (keycode == XK_s || keycode == XK_S)
-		move_forward_back(g, -1);
-	else if (keycode == XK_a || keycode == XK_A)
-		move_strafe(g, -1);
-	else if (keycode == XK_d || keycode == XK_D)
-		move_strafe(g, 1);
-	else if (keycode == XK_Left)
-		rotate(g, 1);
-	else if (keycode == XK_Right)
-		rotate(g, -1);
-	return (0);
-}*/
+	g->player.moved = 1;
+} */
