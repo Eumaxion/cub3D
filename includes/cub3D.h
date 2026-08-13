@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:53:11 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/31 13:01:08 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/08/13 17:36:10 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,16 @@
 #  define O_DIRECTORY 00200000
 # endif
 
-# define MOUSE_SENSITIVITY 0.00025
-# define WIN_W 800
-# define WIN_H 600
-# define MOV_SPEED 0.010
+# define WIN_W 1280
+# define WIN_H 720
+# define MOUSE_SENSITIVITY 0.00060
+# define MOV_SPEED 0.020
 # define ROT_SPEED 0.003
+
+# define MINIMAP_SCALE 12
+# define MINIMAP_MARGIN 20
+
+#define MAP_WALL_COLOR 0x5C3A2E
+#define MAP_FLOOR_COLOR 0x1E1A17
 
 #endif

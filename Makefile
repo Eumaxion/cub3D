@@ -29,6 +29,7 @@ GAMEPLAY_FILES += key_event.c
 GAMEPLAY_FILES += utils_ray.c
 GAMEPLAY_FILES += init_gameplay.c
 GAMEPLAY_FILES += mouse.c
+GAMEPLAY_FILES += minimap.c
 
 BONUS_PATH = ./src/
 

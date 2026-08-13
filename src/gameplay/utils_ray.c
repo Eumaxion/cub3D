@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:47:45 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/08/02 16:19:35 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/08/13 17:26:49 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	img_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-static int	get_tex_color(t_img *tex, int tex_x, int tex_y)
+int	get_tex_color(t_img *tex, int tex_x, int tex_y)
 {
 	char	*dst;
 
@@ -66,7 +66,7 @@ void	draw_column(t_game *g, int x)
 
 	d.r = &g->ray;
 	d.tex = get_wall_texture(g);
-	d.step = 1.0 * g->textures.h / d.r->line_height;
+	d.step = 1.0 * d.tex->height / d.r->line_height;
 	d.tex_pos = (d.r->draw_start - WIN_H / 2
 			+ d.r->line_height / 2) * d.step;
 	d.y = 0;
@@ -74,7 +74,7 @@ void	draw_column(t_game *g, int x)
 		img_pixel_put(&g->screen, x, d.y++, g->colors.ceiling);
 	while (d.y <= d.r->draw_end)
 	{
-		d.tex_y = (int)d.tex_pos & (g->textures.h - 1);
+		d.tex_y = (int)d.tex_pos & (d.tex->height - 1);
 		d.tex_pos += d.step;
 		d.color = get_tex_color(d.tex, d.r->textures_x, d.tex_y);
 		img_pixel_put(&g->screen, x, d.y++, d.color);

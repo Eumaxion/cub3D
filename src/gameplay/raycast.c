@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:47:39 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/08/02 16:37:31 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/08/13 17:18:45 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,16 @@ static void	calc_step_sidedist(t_game *g)
 static void	calc_texture(t_game *g)
 {
 	t_ray	*r;
+	t_img	*tex;
 
 	r = &g->ray;
+	tex = get_wall_texture(g);
 	r->wall_x -= floor(r->wall_x);
-	r->textures_x = (int)(r->wall_x * g->textures.w);
+	r->textures_x = (int)(r->wall_x * tex->width);
 	if (r->side == 0 && r->raydir_x < 0)
-		r->textures_x = g->textures.w - r->textures_x - 1;
+		r->textures_x = tex->width - r->textures_x - 1;
 	if (r->side == 1 && r->raydir_y > 0)
-		r->textures_x = g->textures.w - r->textures_x - 1;
+		r->textures_x = tex->width - r->textures_x - 1;
 }
 
 static void	calc_wall_height(t_game *g)
@@ -141,7 +143,7 @@ void	render_frame(t_game *g)
 		draw_column(g, x);
 		x++;
 	}
+	if (BONUS)
+		draw_minimap(g);
 	mlx_put_image_to_window(g->mlx, g->win, g->screen.img, 0, 0);
-/* 	if (BONUS)
-		draw_minimap(); */
 }

@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:53:57 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/30 16:44:51 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/08/13 17:12:39 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
+	int		width;
+	int		height;
 }	t_img;
 
 typedef struct s_texture
@@ -51,8 +53,7 @@ typedef struct s_texture
 	t_img	south;
 	t_img	west;
 	t_img	east;
-	int		w;
-	int		h;
+	t_img	player;
 }	t_texture;
 
 typedef struct s_player

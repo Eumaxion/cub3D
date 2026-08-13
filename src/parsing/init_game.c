@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:13:22 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/30 16:45:09 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/08/13 17:14:05 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,16 @@ static void	init_img_colors(t_colors *colors)
 	colors->floor = -1;
 }
 
-static void	init_img(t_img *image)
+void	init_img(t_img *image)
 {
 	image->img = NULL;
 	image->addr = NULL;
 	image->path = NULL;
 	image->bpp = 0;
-	image->endian = 0;
 	image->line_len = 0;
+	image->endian = 0;
+	image->width = 0;
+	image->height = 0;
 }
 
 void	init_game(t_game *game)
@@ -77,6 +79,7 @@ void	init_game(t_game *game)
 	init_img(&game->textures.north);
 	init_img(&game->textures.south);
 	init_img(&game->textures.west);
+	init_img(&game->textures.player);
 	init_img_colors(&game->colors);
 	ft_bzero(game->keys, sizeof(game->keys));
 }

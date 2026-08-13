@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:38:01 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/30 16:38:58 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/08/13 17:13:10 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,41 @@ void	init_ray(t_game *g, int x)
 		r->deltadist_y = fabs(1.0 / r->raydir_y);
 }
 
+static void	init_texture_addr(t_img *tex)
+{
+	tex->addr = mlx_get_data_addr(tex->img,
+			&tex->bpp,
+			&tex->line_len,
+			&tex->endian);
+}
+
 void	init_textures(t_game *g)
 {
 	g->textures.north.img = mlx_xpm_file_to_image(g->mlx,
-			g->textures.north.path, &g->textures.w, &g->textures.h);
+			g->textures.north.path,
+			&g->textures.north.width,
+			&g->textures.north.height);
 	g->textures.south.img = mlx_xpm_file_to_image(g->mlx,
-			g->textures.south.path, &g->textures.w, &g->textures.h);
+			g->textures.south.path,
+			&g->textures.south.width,
+			&g->textures.south.height);
 	g->textures.west.img = mlx_xpm_file_to_image(g->mlx,
-			g->textures.west.path, &g->textures.w, &g->textures.h);
+			g->textures.west.path,
+			&g->textures.west.width,
+			&g->textures.west.height);
 	g->textures.east.img = mlx_xpm_file_to_image(g->mlx,
-			g->textures.east.path, &g->textures.w, &g->textures.h);
-	g->textures.north.addr = mlx_get_data_addr(g->textures.north.img,
-			&g->textures.north.bpp, &g->textures.north.line_len,
-			&g->textures.north.endian);
-	g->textures.south.addr = mlx_get_data_addr(g->textures.south.img,
-			&g->textures.south.bpp, &g->textures.south.line_len,
-			&g->textures.south.endian);
-	g->textures.west.addr = mlx_get_data_addr(g->textures.west.img,
-			&g->textures.west.bpp, &g->textures.west.line_len,
-			&g->textures.west.endian);
-	g->textures.east.addr = mlx_get_data_addr(g->textures.east.img,
-			&g->textures.east.bpp, &g->textures.east.line_len,
-			&g->textures.east.endian);
+			g->textures.east.path,
+			&g->textures.east.width,
+			&g->textures.east.height);
+	g->textures.player.img = mlx_xpm_file_to_image(g->mlx,
+			"assets/textures/pug.xpm",
+			&g->textures.player.width,
+			&g->textures.player.height);
+	init_texture_addr(&g->textures.north);
+	init_texture_addr(&g->textures.south);
+	init_texture_addr(&g->textures.west);
+	init_texture_addr(&g->textures.east);
+	init_texture_addr(&g->textures.player);
 }
 
 int	init_mlx(t_game *g)
