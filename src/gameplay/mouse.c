@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/30 15:46:36 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/08/13 17:05:21 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/09/08 12:06:27 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	mouse_handler(int x, int y, t_game *game)
 	int	delta;
 
 	(void)y;
-	
 	if (game->ignore_mouse)
 	{
 		game->ignore_mouse = 0;

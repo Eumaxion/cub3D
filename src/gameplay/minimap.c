@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 17:05:38 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/08/13 17:38:14 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/09/08 11:32:45 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ static void	draw_minimap_row(t_game *g, int y)
 	while (x < g->map_parse.width)
 	{
 		tile = g->map_parse.grid[y][x];
-	if (tile == '1')
-		draw_minimap_tile(g, x, y, MAP_WALL_COLOR);
-	else if (tile == '0' || ft_strchr("NSWE", tile))
-		draw_minimap_tile(g, x, y, MAP_FLOOR_COLOR);
-	x++;
+		if (tile == '1')
+			draw_minimap_tile(g, x, y, MAP_WALL_COLOR);
+		else if (tile == '0' || ft_strchr("NSWE", tile))
+			draw_minimap_tile(g, x, y, MAP_FLOOR_COLOR);
+		x++;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:55:56 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/08/13 17:27:03 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/09/08 11:31:37 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,8 @@ void	init_ray(t_game *g, int x);
 void	img_pixel_put(t_img *img, int x, int y, int color);
 t_img	*get_wall_texture(t_game *g);
 void	draw_column(t_game *g, int x);
-int 	get_tex_color(t_img *tex, int tex_x, int tex_y);
+int		get_tex_color(t_img *tex, int tex_x, int tex_y);
 void	draw_minimap(t_game *g);
-
 
 // main.c
 int		key_press(int keycode, void *param);
@@ -70,6 +69,6 @@ int		render_loop(void *param);
 int		main(int ac, char **av);
 
 // bonus
-int	mouse_handler(int x, int y, t_game *game);
+int		mouse_handler(int x, int y, t_game *game);
 
 #endif

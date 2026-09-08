@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_xpm.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 11:33:09 by mlima-si          #+#    #+#             */
+/*   Updated: 2026/09/08 11:34:29 by mlima-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3D.h"
 
 static int	validate_xpm(t_game *game, t_img *texture)
 {
-	int	width;
-	int	height;
+	int		width;
+	int		height;
 	void	*img;
 
 	width = 0;

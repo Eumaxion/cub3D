@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:38:01 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/08/13 17:13:10 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/09/08 12:07:49 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ int	init_mlx(t_game *g)
 	g->screen.addr = mlx_get_data_addr(g->screen.img,
 			&g->screen.bpp, &g->screen.line_len, &g->screen.endian);
 	if (BONUS)
+	{	
 		mlx_mouse_move(g->mlx, g->win, WIN_W / 2, WIN_H / 2);
+		mlx_mouse_hide(g->mlx, g->win);
+	}
 	return (EXIT_SUCCESS);
 }

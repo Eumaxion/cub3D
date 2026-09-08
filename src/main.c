@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 16:52:50 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/08/02 17:40:27 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/09/08 12:00:13 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 static void	wait_for_input(t_game *game)
 {
 	mlx_hook(game->win, KeyPress, KeyPressMask, (int (*)()) key_press, game);
-	mlx_hook(game->win, KeyRelease, KeyReleaseMask, (int (*)()) key_release, game);
+	mlx_hook(game->win, KeyRelease, KeyReleaseMask, (int (*)()) key_release,
+		game);
 	mlx_hook(game->win, 17, 0, (int (*)()) close_hook, game);
 	if (BONUS)
+	{
 		mlx_hook(game->win, MotionNotify, PointerMotionMask,
 			mouse_handler, game);
+	}
 }
 
 int	main(int ac, char **av)
