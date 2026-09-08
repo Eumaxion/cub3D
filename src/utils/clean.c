@@ -6,7 +6,7 @@
 /*   By: mlima-si <mlima-si@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 20:34:15 by mlima-si          #+#    #+#             */
-/*   Updated: 2026/07/29 13:48:08 by mlima-si         ###   ########.fr       */
+/*   Updated: 2026/09/08 12:29:41 by mlima-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	free_matrix(char **matrix)
 
 static void	check_textures(t_game *game)
 {
+	game->map = NULL;
 	if (game->textures.north.path)
 		free(game->textures.north.path);
 	if (game->textures.south.path)
@@ -45,7 +46,6 @@ int	clean_game(t_game *game)
 		return (1);
 	if (game->map_parse.grid)
 		free_matrix(game->map_parse.grid);
-	game->map = NULL;
 	check_textures(game);
 	if (game->textures.north.img)
 		mlx_destroy_image(game->mlx, game->textures.north.img);
@@ -55,6 +55,8 @@ int	clean_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->textures.west.img);
 	if (game->textures.east.img)
 		mlx_destroy_image(game->mlx, game->textures.east.img);
+	if (game->textures.player.img)
+		mlx_destroy_image(game->mlx, game->textures.player.img);
 	if (game->screen.img)
 		mlx_destroy_image(game->mlx, game->screen.img);
 	if (game->win)
