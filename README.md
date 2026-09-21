@@ -134,13 +134,13 @@ cd cub3D
 Compile the project:
 
 ```bash
-make
+make bonus
 ```
 
 Run it with a valid map:
 
 ```bash
-./cub3D maps/example.cub
+./cub3D ./assets/maps/good/bonus.cub
 ```
 
 ## 🎮 Controls
