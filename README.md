@@ -1,7 +1,7 @@
 *This project has been created as part of the 42 curriculum by mlima-si, dedantas.*
 
 # cub3D
-![Gameplay](assets/readme/gameplay.gif)
+![Gameplay](assets/readme/gameplay_bonus.png)
 
 > A 3D maze rendered from a 2D map using raycasting, inspired by the early-generation FPS engines.
 
